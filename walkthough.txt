@@ -1,0 +1,30 @@
+1)download gae folder called "google_appengine"
+2)add dev_appserver.py to PATH for convenience. One way to do this is:
+favtexteditor ~/.bashrc
+#add line:
+PATH=$PATH:/home/name/somepathto/googleappengine/
+3)Make, beg, borrow, or steal an app.yaml and some app code. There's a helloworld at https://developers.google.com/appengine/docs/python/gettingstartedpython27/helloworld
+The gae-experiment-base is more to the point.
+4) Run:
+dev_appserver.py --port=afreeport /pathto/targetfolder/
+#without the --port arg, 8080 is default (occupied on this machine, why?)
+5)Go to google app engine and register an app name (sandpit4nothing)
+6)Change the application name in app.yaml so it matches the registered app
+7) Run: 
+appcfg.py update targfolder/
+8) Visit appengine.google.com, check out the app dashboard
+
+9)Put the save data function in your website code: steal this from gaebase.
+
+10)If you're local, you'll want to just view the output object on the console. To get it to Google, rerun
+appcfg.py update targfolder/
+
+11)To get it back off google, run:
+appcfg.py download_data --config_file=bulkloader.yaml --filename=<app_name>.csv --kind=DataObject --url=http://<app_name>.appspot.com/_ah/remote_api
+
+make sure the bulkloader.yaml is actually one that will do what you want.
+The app has to be enabled to do this, even though the data is still there when disabled, the url needs to be responsive. This requires the app.yaml to be configured correctly, but the gaebase has this already. (check maybe the ~s tag in front of the app name...)
+
+
+12)nope, brainfried. go visit https://developers.google.com/appengine/docs/python/tools/uploadingdata?csw=1,
+you're up to the bulkloader.yaml config editing, whut?
