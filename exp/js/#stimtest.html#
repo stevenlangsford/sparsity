@@ -1,0 +1,185 @@
+tml>
+<head>
+</head>
+<body>
+<script>
+//essential global vars inherited from old stim
+var canvaswidth=50;
+var canvasheight=50;
+var stimcol=["green","red","blue"];
+var whichtrial=0;
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+//NEW STUFF, NEW STIM
+function greaterthan(a,b){
+return a>b;
+}
+function lessthan(a,b){
+return a<b;
+}
+function makerule(petalval,ringval,colval,petaltest,ringtest,coltest){
+this.petalval=petalval;
+this.ringval=ringval;
+this.colval=colval;
+this.passes=function(aflower){
+return petaltest(aflower.petals,petalval) && 
+ringtest(aflower.ring,ringval) && 
+coltest(aflower.collevel,colval);
+}
+var infostring=""+petalval+":"+ringval+":"+colval;
+if(petaltest(1,2))infostring+=":<:";
+else infostring+=":>:";
+if(ringtest(1,2))infostring+="<:";
+else infostring+=">:";
+if(coltest(1,2))infostring+="<";
+else infostring+=">";
+this.asString=infostring;
+}
+
+function makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
+this.x=x;
+this.y=y;
+this.petals=petallevel;
+this.ring=ringlevel;
+this.collevel = collevel;
+this.colstring = "#"+collevel.toString(16)+"00"+collevel.toString(16);//maybe order changeable, for diff-colour trials
+this.size = sizeparam;
+}
+
+function drawflower(aflower, acanvas){
+var ctx=acanvas.getContext("2d");
+ctx.clearRect(0,0,canvaswidth,canvasheight);
+ctx.lineWidth=5;
+
+ctx.fillStyle=aflower.colstring;
+ctx.strokeStyle=aflower.colstring;
+
+ctx.beginPath();
+ctx.arc(aflower.x,aflower.y,aflower.ring,0,2*Math.PI)
+ctx.stroke();
+
+switch(aflower.petals){
+case 2:
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x,aflower.y-aflower.size*2);
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x,aflower.y+aflower.size*2);
+break;
+case 3:
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x,aflower.y-aflower.size*2);
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x-aflower.size*2,aflower.y+aflower.size);
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+aflower.size*2,aflower.y+aflower.size);
+break;
+case 4:
+ctx.moveTo(aflower.x,aflower.y-aflower.size*2);
+ctx.lineTo(aflower.x,aflower.y+aflower.size*2);
+ctx.moveTo(aflower.x-aflower.size*2,aflower.y);
+ctx.lineTo(aflower.x+aflower.size*2,aflower.y);
+break;
+case 5:
+var r = aflower.size*2;
+var slice = 2*Math.PI/5;
+var theta = [0,slice,2*slice,3*slice,4*slice];
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+r*Math.cos(theta[0]),aflower.y+r*Math.sin(theta[0]));
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+r*Math.cos(theta[1]),aflower.y+r*Math.sin(theta[1]));
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+r*Math.cos(theta[2]),aflower.y+r*Math.sin(theta[2]));
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+r*Math.cos(theta[3]),aflower.y+r*Math.sin(theta[3]));
+ctx.moveTo(aflower.x,aflower.y);
+ctx.lineTo(aflower.x+r*Math.cos(theta[4]),aflower.y+r*Math.sin(theta[4]));
+break;
+}
+ctx.stroke();
+
+}//end drawflower
+
+//RULES
+var rules25 = shuffle([
+//makerule(petalval,ringval,colval,petaltest,ringtest,coltest)
+//petal 25%
+new makerule(3,900,900,lessthan,lessthan,lessthan),
+new makerule(5,900,900,greaterthan,lessthan,lessthan),
+//ring 25%
+new makerule(900,10,900,lessthan,lessthan,lessthan),
+new makerule(900,15,900,lessthan,greaterthan,lessthan),
+//col 25%
+new makerule(900,900,Math.round(255/2),lessthan,lessthan,lessthan),
+new makerule(900,900,Math.round((3*255)/4),lessthan,lessthan,greaterthan)
+])
+
+var rules50 = shuffle([
+//makerule(petalval,ringval,colval,petaltest,ringtest,coltest)
+//petal 50%
+new makerule(4,900,900,lessthan,lessthan,lessthan),
+new makerule(3,900,900,greaterthan,lessthan,lessthan),
+//ring 50%
+new makerule(900,15,900,lessthan,lessthan,lessthan),
+new makerule(900,10,900,lessthan,greaterthan,lessthan),
+//col 50%
+new makerule(900,900,(3*255)/4,lessthan,lessthan,lessthan),
+new makerule(900,900,Math.round(255/2),lessthan,lessthan,greaterthan)
+])
+
+var rules75 = shuffle([
+//makerule(petalval,ringval,colval,petaltest,ringtest,coltest)
+//petal 75%
+new makerule(5,900,900,lessthan,lessthan,lessthan),
+new makerule(2,900,900,greaterthan,lessthan,lessthan),
+//ring 25%
+new makerule(900,20,900,lessthan,lessthan,lessthan),
+new makerule(900,5,900,lessthan,greaterthan,lessthan),
+//col 25%
+new makerule(900,900,255,lessthan,lessthan,lessthan),
+new makerule(900,900,Math.round(255/4),lessthan,lessthan,greaterthan)
+])
+
+
+//TEST AREA
+
+var petallevels=shuffle([2,3,4,5]);
+var ringlevels = shuffle([5,10,15,20]);
+var collevels = shuffle([Math.round(255/4),Math.round(255/2),Math.round((3*255)/4),255]);
+var sizeparam = 10;
+
+var richbox = [];
+var poorbox = [];
+
+var testrule=rules75[0];
+function testflower(){return new makeflower(canvaswidth/2,canvasheight/2,shuffle(petallevels)[0],shuffle(ringlevels)[0],shuffle(collevels)[0],sizeparam);}
+
+var displaysize =10;
+var displaytable = "<table>";
+for(var row=0;row<displaysize;row++){
+displaytable+="<tr>"
+for(var col=0;col<displaysize;col++){
+displaytable+="<td><canvas id=\"canvas"+row+"_"+col+"\" width=\""+canvaswidth+"\", height=\""+canvasheight+"\"></canvas></td>";
+}
+displaytable+="</tr>"
+}
+displaytable+="</table>";
+
+document.write(displaytable);
+
+for(var row=0;row<displaysize;row++){
+for(var col=0;col<displaysize;col++){
+drawflower(testflower(),document.getElementById("canvas"+row+"_"+col));
+}
+}
+
+document.write("<br/>"+testrule.passes(testflower)+"<br/>");
+document.write(testrule.asString);
+
+
+</script>
+</body>
+</html>

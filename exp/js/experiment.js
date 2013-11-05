@@ -62,20 +62,33 @@ var sizeparam = 10;
 setRule();
 var requestcounter = 0;
 var maxrequests = 10;
-//end newstim trial settings...
-
 var stimcol = shuffle(["blue","red","green"]);
-
 var subjectID = Math.round(Math.random() * 1000000);
 var demographicinfo = "";
-//var coherentregionsize = shuffle([.1,.9,.3,.7,.5])[0]; //as proportion, ie .1 is 10%
-//var poscoherent = Math.random()<.5;
-
 var percentrich=sparsitylevel[0]; //used only for display, in instructions and by request buttons
-//if(poscoherent==true)percentrich=coherentregionsize*100;
-//else percentrich = Math.round((1-coherentregionsize)*100);
+
+var richgroup=[];
+var poorgroup=[];
+var hmtotal = 0;
+var hmrich=0;
+
+function initrichgroup(){
+    for(var i=0;i<petallevels.length;i++){
+	for(var j=0;j<ringlevels.length;j++){
+	    for(var k=0;k<collevels.length;k++){
+		//makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
+		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
+		richgroup.push(thisflower);
+		hmtotal++;
+		if(currentrule.passes(thisflower)){hmrich++;}
+	    }
+	}
+    }
+}
+
 
 //var prototype = new makeflower(canvaswidth/2,canvasheight/2,runif(0,flowermax),rndcol("00","ff",stimcol[whichtrial]),runif(0,flowermax),runif(0,flowermax));
+initrichgroup();
 var posleft = Math.random()>.5;
 var drawposrow = 0;
 var drawposcol = 0;
@@ -175,35 +188,35 @@ cleardata();//after saving, ready for next trial if there is one.
 
 //objects, components, tools
 
-function flowerdisteuclid(a,b, coltype){
+//function flowerdisteuclid(a,b, coltype){
 //euclidian for indistinguishable dimensions of variation, manhattan for distinct, don't really care at this stage so long as the region is plausibly learnable.
-var d1=Math.pow((a.arcr-b.arcr)/flowermax,2);
+//var d1=Math.pow((a.arcr-b.arcr)/flowermax,2);
 
-var d2; //maybe check these substrings aren't stuffed up? //diag
-if(coltype=="red")d2=Math.pow((parseInt(a.col.substring(1,3),16)-parseInt(b.col.substring(1,3),16))/255,2);
-if(coltype=="green")d2=Math.pow((parseInt(a.col.substring(3,5),16)-parseInt(b.col.substring(3,5),16))/255,2);
-if(coltype=="blue")d2=Math.pow((parseInt(a.col.substring(5,7),16)-parseInt(b.col.substring(5,7),16))/255,2);
+//var d2; //maybe check these substrings aren't stuffed up? //diag
+//if(coltype=="red")d2=Math.pow((parseInt(a.col.substring(1,3),16)-parseInt(b.col.substring(1,3),16))/255,2);
+//if(coltype=="green")d2=Math.pow((parseInt(a.col.substring(3,5),16)-parseInt(b.col.substring(3,5),16))/255,2);
+//if(coltype=="blue")d2=Math.pow((parseInt(a.col.substring(5,7),16)-parseInt(b.col.substring(5,7),16))/255,2);
 
-var d3=Math.pow((a.linelen-b.linelen)/flowermax,2);
-var d4=Math.pow((a.petal-b.petal)/flowermax,2);
-return Math.sqrt(d1+d2+d3+d4);
-}
+//var d3=Math.pow((a.linelen-b.linelen)/flowermax,2);
+//var d4=Math.pow((a.petal-b.petal)/flowermax,2);
+//return Math.sqrt(d1+d2+d3+d4);
+//}
 
-function coherencescore(arr,distfn){
-var distsum=0;
-for(var i=0;i<arr.length;i++){
-for(var j=0;j<arr.length;j++){
-distsum+=Math.pow(distfn(arr[i],arr[j]),2);
-}
-}
-return distsum;
-}
+//function coherencescore(arr,distfn){
+//var distsum=0;
+//for(var i=0;i<arr.length;i++){
+//for(var j=0;j<arr.length;j++){
+//distsum+=Math.pow(distfn(arr[i],arr[j]),2);
+//}
+//}
+//return distsum;
+//}
 
-function colnumber(colstring){//whoops. Should have stored this as a number in the first place and converted to a colour string only at the last minute. Oh well.
-    if(stimcol[whichtrial]=="red")return parseInt(colstring.substring(1,3),16);
-    if(stimcol[whichtrial]=="green")return parseInt(colstring.substring(3,5),16);
-    if(stimcol[whichtrial]=="blue") return parseInt(colstring.substring(5,7),16);
-}
+//function colnumber(colstring){//whoops. Should have stored this as a number in the first place and converted to a colour string only at the last minute. Oh well.
+//    if(stimcol[whichtrial]=="red")return parseInt(colstring.substring(1,3),16);
+//    if(stimcol[whichtrial]=="green")return parseInt(colstring.substring(3,5),16);
+//    if(stimcol[whichtrial]=="blue") return parseInt(colstring.substring(5,7),16);
+//}
 
 
 function greaterthan(a,b){
@@ -237,7 +250,6 @@ this.y=y;
 this.petals=petallevel;
 this.ring=ringlevel;
 this.collevel = collevel;
-//this.colstring = "#00"+collevel.toString(16)+"00";//maybe order changeable, for diff-colour trials
     if(stimcol[whichtrial]=="red") this.colstring="#"+collevel.toString(16)+"0000";
     if(stimcol[whichtrial]=="green")this.colstring="#00"+collevel.toString(16)+"00";
     if(stimcol[whichtrial]=="blue")this.colstring="#0000"+collevel.toString(16);
@@ -321,7 +333,8 @@ function shuffle(o){ //v1.0
 //drawing functions
 
 function sampletable(trows, tcols, type){
-var t = "<table>";
+    console.log("stable"+trows+":"+tcols);//diag
+var t = "<table style=\"border:1px solid black\">";
 for(var i=0;i<trows;i++){
 t+="<tr>";
 for(var j=0;j<tcols;j++){
@@ -404,39 +417,30 @@ if(drawnegrow>=samplerows){drawnegrow=0;};//ugh. unlikely?
 
 function showtrial(){
 scroll(0,0);
-    requestcounter=0;
-    var posbutton = "<button style=\"padding:3em 1em; font-size:1.5em\" onclick=\"drawExample('pos')\">Selenoid <strong>rich</strong><br/>"+percentrich+"%</button>";
-    var negbutton = "<button style=\"padding:3em 1em;font-size:1.5em\" onclick=\"drawExample('neg')\">Selenoid <strong>poor</strong><br/>"+(100-percentrich)+"%</button>";
+    var atrial="<table class=\"centered\" style=\"border:1px solid black\">";
+    atrial+="<tr><td colspan=\"3\">";
+    atrial+="Instruction, this is pattern "+whichtrial+", etc";
+    atrial+="</td></tr>";
+    atrial+="<tr>";
+    atrial+="<td>";
+    var nicewidth = 7;
+    var posrowsneeded = 0;
+    console.log("while"+nicewidth+"*"+posrowsneeded+"<"+hmtotal);//diag
+    while(nicewidth*posrowsneeded<hmtotal)posrowsneeded+=nicewidth;
+    atrial+=sampletable(posrowsneeded,nicewidth,"pos");
+    atrial+="</td>";
+    atrial+="<td></td>";
+    atrial+="<td>";
+    var negrowsneeded=0;
+    while(nicewidth*negrowsneeded<(hmtotal-hmrich))negrowsneeded+=negrowsneeded+nicewidth;
+    atrial+=sampletable(negrowsneeded,nicewidth,"neg");
+    atrial+="</td>";
+    atrial+="</tr>";
+    atrial+="<tr><td></td><td>Let there be buttons</td><td></td></tr>"
+    atrial+="</table>";
+    document.getElementById("viewdiv").innerHTML=atrial;
+//    alert(document.getElementById("pos0_0"));//diag
 
-
-var atrial = "<table class=\"centered\"><tr><td colspan=\"4\">";
-if(whichtrial==0)atrial+="<p><strong>This is a practice run</strong></p>";
-else atrial+="<p><strong>Pattern "+whichtrial+"</strong></p>";
-atrial+="<div id=\"hmreqdiv\"><h4> You have "+maxrequests+" requests left!</h4></div>"
-atrial+="</td></tr>";
-atrial+="<tr><td colspan=\"4\">";
-atrial+="At this time, ask for examples of plankton by clicking on the appropriate vat of plankton below. Ask until you feel confident in your ability to tell which ones are selenoid-rich. When you're ready click 'Go to test' to see if you have figured it out."
-atrial+="</td></tr>";
-atrial+="<tr><td>";
-
-if(posleft)atrial+=sampletable(samplerows, samplecols, "pos");
-else atrial += sampletable(samplerows, samplecols, "neg");
-
-atrial+="</td><td><table><tr><td>";
-if(posleft)atrial+=posbutton;
-else atrial += negbutton;
-atrial+="</td><td>";
-if(!posleft)atrial+=posbutton;
-else atrial += negbutton;
-atrial+="</td><td></tr>";
-atrial+="<tr><td colspan=\"2\"><button onclick=\"gotest()\">Go to test!</button></td></tr>";
-atrial+="</table>";
-atrial+="<td>"
-if(!posleft)atrial+=sampletable(samplerows, samplecols, "pos");
-else atrial+=sampletable(samplerows, samplecols, "neg");
-atrial+="</td></tr>";
-atrial+="</table>";
-return atrial;
 }
 
 var testsequence = shuffle([1,1,1,1,1,0,0,0,0,0]);
@@ -540,7 +544,7 @@ testindex=0;
 correct=0;
 hmsamples=0;
 
-document.getElementById("viewdiv").innerHTML=showtrial();
+showtrial();
 }
 function finish(){
     var symbols=["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
@@ -882,7 +886,7 @@ function quizvalidate(){
     var valid=document.getElementById("rich").checked && document.getElementById(whichrichnessradio()).checked && document.getElementById("score").checked && document.getElementById("label").checked && document.getElementById("prrdiff").checked;
 if(valid){
     demographics();
-//document.getElementById("viewdiv").innerHTML=showtrial();
+
 }
 else {
 alert("You didn't answer all the questions correctly. Please read through the instructions and take the quiz again to continue.");
@@ -916,7 +920,7 @@ function demographicsvalidate(){
     demostring+=amazonid;
     if(genderflag&&langflag&&ageflag&&countryflag&&idflag){
 	demographicinfo=demostring;
-	document.getElementById("viewdiv").innerHTML=showtrial();
+	showtrial();
     }    
     else alert("Please fill out all the fields.");
 }
@@ -934,10 +938,17 @@ function tweenscreen(){
 function runExp(){
 //RUN ON LOAD: ie main method
 document.write("<div id=\"infodiv\"></div><br/><div id=\"viewdiv\"></div>");//divs must exist before fncalls
-instructions();//actual start point
+
+//instructions();//actual start point
+
+//optional instrucion-skipping cheat: 38 is up arrow
+//    document.onkeypress=function(e){
+//	e = e||window.event;
+//	if(e.keyCode==38)showtrial();//just go to task
+//    };
 
 //diag start points:
-//document.getElementById("viewdiv").innerHTML=showtrial();//just go to task
+showtrial();//just go to task
 //gotest();
 //demographics();
 //tweenscreen();
