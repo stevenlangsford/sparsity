@@ -86,9 +86,8 @@ function initrichgroup(){
     }
 }
 
-
 //var prototype = new makeflower(canvaswidth/2,canvasheight/2,runif(0,flowermax),rndcol("00","ff",stimcol[whichtrial]),runif(0,flowermax),runif(0,flowermax));
-initrichgroup();
+
 var posleft = Math.random()>.5;
 var drawposrow = 0;
 var drawposcol = 0;
@@ -333,7 +332,6 @@ function shuffle(o){ //v1.0
 //drawing functions
 
 function sampletable(trows, tcols, type){
-    console.log("stable"+trows+":"+tcols);//diag
 var t = "<table style=\"border:1px solid black\">";
 for(var i=0;i<trows;i++){
 t+="<tr>";
@@ -414,33 +412,107 @@ if(drawnegrow>=samplerows){drawnegrow=0;};//ugh. unlikely?
 }
 }//end drawexample
 
+var richgroup=[];
+var poorgroup=[];
+var hmtotal = 0;
+var hmrich=0;
+var currentrule=rules75[0];
+
+function initrichgroup(){
+    for(var i=0;i<petallevels.length;i++){
+	for(var j=0;j<ringlevels.length;j++){
+	    for(var k=0;k<collevels.length;k++){
+		//makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
+		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
+		richgroup.push(thisflower);
+		hmtotal++;
+		if(currentrule.passes(thisflower)){hmrich++;}
+	    }
+	}
+    }
+}
+
+//function testflower(){return new makeflower(canvaswidth/2,canvasheight/2,shuffle(petallevels)[0],shuffle(ringlevels)[0],shuffle(collevels)[0],sizeparam);}
+
+function swapout(cellcount,origin){
+    if(origin=="pos"){
+	if(cellcount>=richgroup.length)return;
+	temp = richgroup[cellcount];
+	poorgroup.push(temp);
+	richgroup.splice(cellcount,1);
+    }
+    if(origin=="neg"){
+	if(cellcount>=poorgroup.length)return;
+	temp=poorgroup[cellcount];
+	richgroup.push(temp);
+	poorgroup.splice(cellcount,1);
+    }
+    redraw();
+}
+
+function redraw(){
+listtodrawntable(8,8,richgroup,"pos");
+listtodrawntable(4,4,poorgroup,"neg");
+}
+
+function listtodrawntable(rows,cols,planktonlist,targdiv){
+    var tstr="<table>"
+    var cellcount=0;
+    for(var row=0;row<rows;row++){
+	tstr+="<tr>";
+	for(var col=0;col<cols;col++){
+	    tstr+="<td style=\"border:1px solid black\"><canvas onclick=\"swapout("+cellcount+",'"+targdiv+"')\" width=\""+canvaswidth+"\", height=\""+canvasheight+"\" id=\""+targdiv+row+"_"+col+"\"</td>";
+	    cellcount++;
+	}
+	tstr+="</tr>"
+    }
+    tstr+="</table>";
+    
+    var thisrow=0;
+    var thiscol=0;
+    function nextcell(){
+	thiscol=thiscol+1;
+	if(thiscol>=cols){thiscol=0;thisrow++;}
+    }
+    document.getElementById(targdiv).innerHTML=tstr;
+    for(var i=0;i<planktonlist.length;i++){
+	drawflower(planktonlist[i],document.getElementById(targdiv+thisrow+"_"+thiscol));
+	nextcell();
+    }//for each plankton in list
+}
+
 
 function showtrial(){
-scroll(0,0);
+    richgroup.length=0;
+    poorgroup.length=0;
+    initrichgroup();
+    var posbutton = "<button>See one positive example</button>";
+    var negbutton = "<button>See one negative example</button>";
+    scroll(0,0);
     var atrial="<table class=\"centered\" style=\"border:1px solid black\">";
     atrial+="<tr><td colspan=\"3\">";
     atrial+="Instruction, this is pattern "+whichtrial+", etc";
     atrial+="</td></tr>";
     atrial+="<tr>";
     atrial+="<td>";
-    var nicewidth = 7;
-    var posrowsneeded = 0;
-    console.log("while"+nicewidth+"*"+posrowsneeded+"<"+hmtotal);//diag
-    while(nicewidth*posrowsneeded<hmtotal)posrowsneeded+=nicewidth;
-    atrial+=sampletable(posrowsneeded,nicewidth,"pos");
+    if(posleft)atrial+="<div id=\"pos\"></div>";
+    else atrial+="<div id=\"neg\"></div>";
     atrial+="</td>";
     atrial+="<td></td>";
     atrial+="<td>";
-    var negrowsneeded=0;
-    while(nicewidth*negrowsneeded<(hmtotal-hmrich))negrowsneeded+=negrowsneeded+nicewidth;
-    atrial+=sampletable(negrowsneeded,nicewidth,"neg");
+    if(posleft)atrial+="<div id=\"neg\"></div>";
+    else atrial+="<div id=\"pos\"></div>";
     atrial+="</td>";
     atrial+="</tr>";
-    atrial+="<tr><td></td><td>Let there be buttons</td><td></td></tr>"
+    atrial+="<tr>"
+    if(posleft)atrial+="<td style=\"float:left\">"+posbutton+"</td><td></td><td style=\"float:right\">"+negbutton+"</td>";
+    else atrial+="<td style=\"float:left\">"+negbutton+"</td><td></td><td style=\"float:right\">"+posbutton+"</td>";
+    atrial+="</tr>"
+    atrial+="<tr><td colspan=\"3\"><button>Submit answer</button></td></tr>";
     atrial+="</table>";
     document.getElementById("viewdiv").innerHTML=atrial;
 //    alert(document.getElementById("pos0_0"));//diag
-
+    redraw();
 }
 
 var testsequence = shuffle([1,1,1,1,1,0,0,0,0,0]);
