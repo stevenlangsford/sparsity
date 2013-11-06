@@ -67,10 +67,13 @@ var subjectID = Math.round(Math.random() * 1000000);
 var demographicinfo = "";
 var percentrich=sparsitylevel[0]; //used only for display, in instructions and by request buttons
 
-var richgroup=[];
-var poorgroup=[];
+var richgroup=[];//display groups, ie hypothesised, not true groups
+var poorgroup=[];//display group
 var hmtotal = 0;
 var hmrich=0;
+var knownids=[];
+var richids=[];
+var poorids=[];
 
 function initrichgroup(){
     for(var i=0;i<petallevels.length;i++){
@@ -80,10 +83,15 @@ function initrichgroup(){
 		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
 		richgroup.push(thisflower);
 		hmtotal++;
-		if(currentrule.passes(thisflower)){hmrich++;}
+		if(currentrule.passes(thisflower)){
+		    hmrich++; 
+		    richids.push(thisflower.idno);
+		}
+		else poorids.push(thisflower.idno);
 	    }
 	}
     }
+
 }
 
 //var prototype = new makeflower(canvaswidth/2,canvasheight/2,runif(0,flowermax),rndcol("00","ff",stimcol[whichtrial]),runif(0,flowermax),runif(0,flowermax));
@@ -176,8 +184,6 @@ function savetrial(){
     exp_data.testans=arrtostring(testans);
     exp_data.testresponses=arrtostring(testresponses);
 
-    //console.log(exp_data);
-
     // save trial data
     saveData(exp_data);
 
@@ -243,7 +249,10 @@ else infostring+=">";
 this.asString=infostring;
 }
 
+var floweridcounter = 0; //UGH YUK
 function makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
+    this.idno=floweridcounter;
+    floweridcounter++;
 this.x=x;
 this.y=y;
 this.petals=petallevel;
@@ -260,6 +269,19 @@ function drawflower(aflower, acanvas){
 var ctx=acanvas.getContext("2d");
 ctx.clearRect(0,0,canvaswidth,canvasheight);
 ctx.lineWidth=5;
+    if(knownids.indexOf(aflower.idno)>-1){
+	if(currentrule.passes(aflower)){ctx.fillStyle="#ff0000";}
+	else {ctx.fillStyle="#0000ff";}
+	ctx.globalAlpha=.3;
+	ctx.fillRect(0,0,canvaswidth,canvasheight);
+	ctx.globalAlpha=1;
+	// ctx.moveTo(0,0);
+	// ctx.lineTo(canvaswidth,0);
+	// ctx.lineTo(canvaswidth,canvasheight);
+	// ctx.lineTo(0,canvasheight);
+	// ctx.lineTo(0,0);
+	// ctx.stroke();
+    }
 
 ctx.fillStyle=aflower.colstring;
 ctx.strokeStyle=aflower.colstring;
@@ -418,32 +440,18 @@ var hmtotal = 0;
 var hmrich=0;
 var currentrule=rules75[0];
 
-function initrichgroup(){
-    for(var i=0;i<petallevels.length;i++){
-	for(var j=0;j<ringlevels.length;j++){
-	    for(var k=0;k<collevels.length;k++){
-		//makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
-		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
-		richgroup.push(thisflower);
-		hmtotal++;
-		if(currentrule.passes(thisflower)){hmrich++;}
-	    }
-	}
-    }
-}
-
 //function testflower(){return new makeflower(canvaswidth/2,canvasheight/2,shuffle(petallevels)[0],shuffle(ringlevels)[0],shuffle(collevels)[0],sizeparam);}
 
 function swapout(cellcount,origin){
     if(origin=="pos"){
 	if(cellcount>=richgroup.length)return;
-	temp = richgroup[cellcount];
+	var temp = richgroup[cellcount];
 	poorgroup.push(temp);
 	richgroup.splice(cellcount,1);
     }
     if(origin=="neg"){
 	if(cellcount>=poorgroup.length)return;
-	temp=poorgroup[cellcount];
+	var temp=poorgroup[cellcount];
 	richgroup.push(temp);
 	poorgroup.splice(cellcount,1);
     }
@@ -481,13 +489,56 @@ function listtodrawntable(rows,cols,planktonlist,targdiv){
     }//for each plankton in list
 }
 
+function seeExample(type){
+
+    if(type=="pos"){
+	richids = shuffle(richids);
+	console.log("richids "+richids);//diag
+	for(var i=0;i<richids.length;i++){
+	    console.log("candidate "+richids[i]+" "+knownids.indexOf(richids[i]));//diag
+	    if(knownids.indexOf(richids[i])<0){
+		console.log("revealing "+richids[i]);//diag
+		knownids.push(richids[i]);
+		for(var j=0;j<poorgroup.length;j++){
+		    if(poorgroup[j].idno==richids[i]){
+			richgroup.push(poorgroup[j]);
+			poorgroup.splice(j,1);
+		    }//if found rich-example, swap into richgroup
+		}//for everything currently in poor-group
+		break;
+	    }//if richids[i] is not already in knownids
+	}//for each index in richids 
+    }//if pos requested
+    else{
+	poorids=shuffle(poorids);
+	console.log("poorids "+poorids);//diag
+	for(var i=0;i<poorids.length;i++){
+	    if(knownids.indexOf(poorids[i])<0){
+		console.log("revealing "+poorids[i]);//diag
+		knownids.push(poorids[i]);
+		for(var j=0;j<richgroup.length;j++){
+		    if(richgroup[j].idno==poorids[i]){
+			poorgroup.push(richgroup[j]);
+			richgroup.splice(j,1);
+		    }//if found poor example, swap into poor group
+		}//for everything currently in rich group
+		break;
+	    }//if poorids[i] not already in knownids
+	}//for each index in poorids
+    }//if neg requested
+
+    console.log(type);//diag, ran?
+    console.log(knownids);
+    redraw();
+}//end seeExample
 
 function showtrial(){
     richgroup.length=0;
     poorgroup.length=0;
     initrichgroup();
-    var posbutton = "<button>See one positive example</button>";
-    var negbutton = "<button>See one negative example</button>";
+    richgroup=shuffle(richgroup);
+    var posbutton = "<button onclick=\"seeExample('pos')\">See one positive example</button>";
+    var negbutton = "<button onclick=\"seeExample('neg')\">See one negative example</button>";
     scroll(0,0);
     var atrial="<table class=\"centered\" style=\"border:1px solid black\">";
     atrial+="<tr><td colspan=\"3\">";
