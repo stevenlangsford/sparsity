@@ -1,5 +1,4 @@
 /*global $, document, console, alert */
-//argh
 var currentrule; 
 var rules25 = shuffle([
 //makerule(petalval,ringval,colval,petaltest,ringtest,coltest)
@@ -32,10 +31,10 @@ var rules75 = shuffle([
 //petal 75%
 new makerule(5,900,900,lessthan,lessthan,lessthan),
 new makerule(2,900,900,greaterthan,lessthan,lessthan),
-//ring 25%
+//ring 75%
 new makerule(900,20,900,lessthan,lessthan,lessthan),
 new makerule(900,5,900,lessthan,greaterthan,lessthan),
-//col 25%
+//col 75%
 new makerule(900,900,255,lessthan,lessthan,lessthan),
 new makerule(900,900,Math.round(255/4),lessthan,lessthan,greaterthan)
 ])
@@ -55,18 +54,18 @@ var samplecols = 7;
 //trial info
 var whichtrial = 0;
 var sparsitylevel=shuffle([25,50,75]);
-var petallevels=shuffle([2,3,4,5]);
-var ringlevels = shuffle([5,10,15,20]);
-var collevels = shuffle([Math.round(255/4),Math.round(255/2),Math.round((3*255)/4),255]);
+var petallevels=[2,3,4,5];
+var ringlevels = [5,10,15,20];
+var collevels = [Math.round(255/4),Math.round(255/2),Math.round((3*255)/4),255];
 var sizeparam = 10;
-setRule();
+
 var requestcounter = 0;
 var maxrequests = 10;
 var stimcol = shuffle(["blue","red","green"]);
 var subjectID = Math.round(Math.random() * 1000000);
 var demographicinfo = "";
 var percentrich=sparsitylevel[0]; //used only for display, in instructions and by request buttons
-
+setRule();
 var richgroup=[];//display groups, ie hypothesised, not true groups
 var poorgroup=[];//display group
 var hmtotal = 0;
@@ -74,14 +73,20 @@ var hmrich=0;
 var knownids=[];
 var richids=[];
 var poorids=[];
-
-function initrichgroup(){
+var startasrich;
+function setstart(){//might want to change this to randomize start side for 50%... now it's always all-rich.
+    if(percentrich>=50)startasrich=true;
+    else startasrich=false;
+} 
+setstart();
+function initgroups(){
     for(var i=0;i<petallevels.length;i++){
 	for(var j=0;j<ringlevels.length;j++){
 	    for(var k=0;k<collevels.length;k++){
 		//makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
 		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
-		richgroup.push(thisflower);
+		if(startasrich==true)richgroup.push(thisflower);
+		else poorgroup.push(thisflower);
 		hmtotal++;
 		if(currentrule.passes(thisflower)){
 		    hmrich++; 
@@ -91,10 +96,7 @@ function initrichgroup(){
 	    }
 	}
     }
-
 }
-
-//var prototype = new makeflower(canvaswidth/2,canvasheight/2,runif(0,flowermax),rndcol("00","ff",stimcol[whichtrial]),runif(0,flowermax),runif(0,flowermax));
 
 var posleft = Math.random()>.5;
 var drawposrow = 0;
@@ -106,19 +108,8 @@ var sample=getSample();
 var poscounter = 0;
 var negcounter = 0;
 
-//test info
-var testindex=0;
-var correct=0;
-var testtype;
-var hmtests = 10;
-var enableresponsedelay=300;
-var hmsamples=0;
-
-
-
-
 function setRule(){
-    switch(sparsitylevel[0]){
+      switch(percentrich){
     case 25: currentrule=rules25[whichtrial];
 	break;
     case 50: currentrule=rules50[whichtrial];
@@ -173,7 +164,7 @@ function savetrial(){
     }
     exp_data.examplesseen=examplesseen_storestring;
     
-    //testitems.length=10;//one extra test item generated but not used?
+
     var testitem_storestring="";
     for(var i=0;i<testitems.length;i++){
 	testitem_storestring+=testitems[i].toString;
@@ -189,40 +180,6 @@ function savetrial(){
 
 cleardata();//after saving, ready for next trial if there is one.
 }
-
-
-//objects, components, tools
-
-//function flowerdisteuclid(a,b, coltype){
-//euclidian for indistinguishable dimensions of variation, manhattan for distinct, don't really care at this stage so long as the region is plausibly learnable.
-//var d1=Math.pow((a.arcr-b.arcr)/flowermax,2);
-
-//var d2; //maybe check these substrings aren't stuffed up? //diag
-//if(coltype=="red")d2=Math.pow((parseInt(a.col.substring(1,3),16)-parseInt(b.col.substring(1,3),16))/255,2);
-//if(coltype=="green")d2=Math.pow((parseInt(a.col.substring(3,5),16)-parseInt(b.col.substring(3,5),16))/255,2);
-//if(coltype=="blue")d2=Math.pow((parseInt(a.col.substring(5,7),16)-parseInt(b.col.substring(5,7),16))/255,2);
-
-//var d3=Math.pow((a.linelen-b.linelen)/flowermax,2);
-//var d4=Math.pow((a.petal-b.petal)/flowermax,2);
-//return Math.sqrt(d1+d2+d3+d4);
-//}
-
-//function coherencescore(arr,distfn){
-//var distsum=0;
-//for(var i=0;i<arr.length;i++){
-//for(var j=0;j<arr.length;j++){
-//distsum+=Math.pow(distfn(arr[i],arr[j]),2);
-//}
-//}
-//return distsum;
-//}
-
-//function colnumber(colstring){//whoops. Should have stored this as a number in the first place and converted to a colour string only at the last minute. Oh well.
-//    if(stimcol[whichtrial]=="red")return parseInt(colstring.substring(1,3),16);
-//    if(stimcol[whichtrial]=="green")return parseInt(colstring.substring(3,5),16);
-//    if(stimcol[whichtrial]=="blue") return parseInt(colstring.substring(5,7),16);
-//}
-
 
 function greaterthan(a,b){
 return a>b;
@@ -275,12 +232,6 @@ ctx.lineWidth=5;
 	ctx.globalAlpha=.3;
 	ctx.fillRect(0,0,canvaswidth,canvasheight);
 	ctx.globalAlpha=1;
-	// ctx.moveTo(0,0);
-	// ctx.lineTo(canvaswidth,0);
-	// ctx.lineTo(canvaswidth,canvasheight);
-	// ctx.lineTo(0,canvasheight);
-	// ctx.lineTo(0,0);
-	// ctx.stroke();
     }
 
 ctx.fillStyle=aflower.colstring;
@@ -404,43 +355,11 @@ else {retval=sample.neg[negcounter]; negcounter++;}
 return retval;
 }
 
-function drawExample(type){
-hmsamples++;
-    requestcounter++;
-    if(requestcounter>maxrequests){
-	alert("You have no more requests left for this trial. Please click 'Go to test' to continue.");
-	return;
-    }
-    document.getElementById("hmreqdiv").innerHTML="<h4>You have "+(maxrequests-requestcounter)+" requests left!</h4>";
-//data to save
-if(type=="pos")requests.push(1);
-else requests.push(0);
-
-var todraw = nextExample(type);
-
-examplesseen.push(todraw);//data to save
-
-if(type=="pos"){
-drawflower(todraw,document.getElementById(type+drawposrow+"_"+drawposcol));
-drawposcol++;
-if(drawposcol>=samplecols){drawposrow++; drawposcol=0;}
-if(drawposrow>=samplerows){drawposrow=0;};//ugh. unlikely?
-}
-else{
-drawflower(todraw,document.getElementById(type+drawnegrow+"_"+drawnegcol));
-drawnegcol++;
-if(drawnegcol>=samplecols){drawnegrow++; drawnegcol=0;}
-if(drawnegrow>=samplerows){drawnegrow=0;};//ugh. unlikely?
-}
-}//end drawexample
-
 var richgroup=[];
 var poorgroup=[];
 var hmtotal = 0;
 var hmrich=0;
-var currentrule=rules75[0];
-
-//function testflower(){return new makeflower(canvaswidth/2,canvasheight/2,shuffle(petallevels)[0],shuffle(ringlevels)[0],shuffle(collevels)[0],sizeparam);}
+var currentrule;//=rules75[0];
 
 function swapout(cellcount,origin){
     if(origin=="pos"){
@@ -457,10 +376,19 @@ function swapout(cellcount,origin){
     }
     redraw();
 }
-
 function redraw(){
-listtodrawntable(8,8,richgroup,"pos");
-listtodrawntable(4,4,poorgroup,"neg");
+    if(percentrich==75){
+	listtodrawntable(8,8,richgroup,"pos");
+	listtodrawntable(4,4,poorgroup,"neg");
+    }
+    if(percentrich==50){
+	    listtodrawntable(4,8,poorgroup,"neg");	
+	    listtodrawntable(8,8,richgroup,"pos");
+    }
+    if(percentrich==25){
+	listtodrawntable(4,4,richgroup,"pos");
+	listtodrawntable(8,8,poorgroup,"neg");
+    }
 }
 
 function listtodrawntable(rows,cols,planktonlist,targdiv){
@@ -490,14 +418,10 @@ function listtodrawntable(rows,cols,planktonlist,targdiv){
 }
 
 function seeExample(type){
-
     if(type=="pos"){
 	richids = shuffle(richids);
-	console.log("richids "+richids);//diag
 	for(var i=0;i<richids.length;i++){
-	    console.log("candidate "+richids[i]+" "+knownids.indexOf(richids[i]));//diag
 	    if(knownids.indexOf(richids[i])<0){
-		console.log("revealing "+richids[i]);//diag
 		knownids.push(richids[i]);
 		for(var j=0;j<poorgroup.length;j++){
 		    if(poorgroup[j].idno==richids[i]){
@@ -508,13 +432,12 @@ function seeExample(type){
 		break;
 	    }//if richids[i] is not already in knownids
 	}//for each index in richids 
+    if(richgroup.length>64*percentrich/100&&startasrich==false)alert("The new selenoid rich example cannot be shown because that group is already full. Please move something from the selenoid rich group to the selenoid poor group to free up space for the new example.");
     }//if pos requested
     else{
 	poorids=shuffle(poorids);
-	console.log("poorids "+poorids);//diag
 	for(var i=0;i<poorids.length;i++){
 	    if(knownids.indexOf(poorids[i])<0){
-		console.log("revealing "+poorids[i]);//diag
 		knownids.push(poorids[i]);
 		for(var j=0;j<richgroup.length;j++){
 		    if(richgroup[j].idno==poorids[i]){
@@ -525,31 +448,41 @@ function seeExample(type){
 		break;
 	    }//if poorids[i] not already in knownids
 	}//for each index in poorids
+    if(poorgroup.length>64*(100-percentrich)/100&&startasrich==true)alert("The new selenoid poor example cannot be shown because that group is already full. Please move something from the selenoid poor group to the selenoid rich group to free up space for the new example.");
     }//if neg requested
-
-    console.log(type);//diag, ran?
-    console.log(knownids);
     redraw();
 }//end seeExample
 
 function showtrial(){
     richgroup.length=0;
     poorgroup.length=0;
-    initrichgroup();
+    initgroups();//assumes everything is starting in richgroup...
+
     richgroup=shuffle(richgroup);
-    var posbutton = "<button onclick=\"seeExample('pos')\">See one positive example</button>";
-    var negbutton = "<button onclick=\"seeExample('neg')\">See one negative example</button>";
+    poorgroup=shuffle(poorgroup);
+//    rebalance();
+
+    var posbutton = "<button onclick=\"seeExample('pos')\"><p>Highlight a</p><p> <strong>selenoid rich</strong></p>example</button>";
+    var negbutton = "<button onclick=\"seeExample('neg')\"><p>Highlight a</p> <p><strong> selenoid poor</strong></p> example</button>";
     scroll(0,0);
-    var atrial="<table class=\"centered\" style=\"border:1px solid black\">";
+    var atrial="<table class=\"centered\""; //style=\"border:1px solid black\">";
     atrial+="<tr><td colspan=\"3\">";
-    atrial+="Instruction, this is pattern "+whichtrial+", etc";
+    atrial+="<h3>"
+    if(whichtrial==0)atrial+="This is a practice run";
+    else atrial += "Pattern"+whichtrial;
+    atrial+="</h3>";
+    atrial+="Move plankton between groups by clicking on them, or request examples using the buttons below. When you're confident you have moved all the plankton to the correct group, click 'Submit answer' to continue. ";
     atrial+="</td></tr>";
+    atrial+="<tr>"
+    if(posleft)atrial+="<td style=\"float:left\"><h4>Selenoid rich group:"+percentrich+"%</h4></td><td></td><td style=\"float:right\"><h4>Selenoid poor group:"+(100-percentrich)+"%</h4></td>";
+    else atrial+="<td style=\"float:left\"><h4>Selenoid poor group:"+(100-percentrich)+"%</h4></td><td></td><td style=\"float:right\"><h4>Selenoid rich group:"+percentrich+"%</h4></td>";
+    atrial+="</tr>"
     atrial+="<tr>";
     atrial+="<td>";
     if(posleft)atrial+="<div id=\"pos\"></div>";
     else atrial+="<div id=\"neg\"></div>";
     atrial+="</td>";
-    atrial+="<td></td>";
+    atrial+="<td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>";//YUK!!!
     atrial+="<td>";
     if(posleft)atrial+="<div id=\"neg\"></div>";
     else atrial+="<div id=\"pos\"></div>";
@@ -559,102 +492,44 @@ function showtrial(){
     if(posleft)atrial+="<td style=\"float:left\">"+posbutton+"</td><td></td><td style=\"float:right\">"+negbutton+"</td>";
     else atrial+="<td style=\"float:left\">"+negbutton+"</td><td></td><td style=\"float:right\">"+posbutton+"</td>";
     atrial+="</tr>"
-    atrial+="<tr><td colspan=\"3\"><button>Submit answer</button></td></tr>";
+    atrial+="<tr><td colspan=\"3\"><button id=\"submitans\" onclick=\"submit()\">Submit answer</button></td></tr>";
     atrial+="</table>";
     document.getElementById("viewdiv").innerHTML=atrial;
-//    alert(document.getElementById("pos0_0"));//diag
     redraw();
 }
 
-var testsequence = shuffle([1,1,1,1,1,0,0,0,0,0]);
-var testcounter = 0;
-
-function gotest(){
-scroll(0,0);
-testsequence=shuffle(testsequence);
-testcounter=0;
-var posresponse = "<button onclick=\"response('pos')\" id=\"posresponse\">selenoid-rich</button>";
-var negresponse = "<button onclick=\"response('neg')\" id=\"negresponse\">selenoid-poor</button>";
-
-var testview = "<p style=\"text-align:center\">These test samples have been drawn randomly from either the selenoid-rich or selenoid-poor group, each with a 50% chance.<br/><table class=\"centered\">";
-testview+="<tr><td colspan=\"2\">Which group was this example drawn from?</td></tr>"
-testview+="<tr><td colspan=\"2\">";
-testview+="<canvas id=\"testcanvas\"width=\""+canvaswidth+"\", height=\""+canvasheight+"\"></canvas>";
-testview+="</td></tr>";
-testview+="<tr><td>";
-if(posleft)testview+=posresponse;//position of response buttons should match presentation side
-else testview+=negresponse;
-testview+="</td><td>";
-if(!posleft)testview+=posresponse;
-else testview+=negresponse;
-
-testview+="</td></tr>";
-testview+="</table>";
-correct=0;
-testindex=0;
-
-document.getElementById("viewdiv").innerHTML=testview;
-nexttest();
+function submit(){
+//check the submission is even possible...
+    if(richgroup.length!=64*percentrich/100){
+	alert("Your answer has the wrong number of plankton in each group, so it can't possibly be correct.Please move some plankton from the overfull side to the underfull side and reconsider your answer before continuing.");
+	return;
+    }
+    for(var i=0; i<richgroup.length;i++){
+	if(knownids.indexOf(richgroup[i].idno)>=0&&richids.indexOf(richgroup[i].idno)<0){
+	    alert("Your answer has some known examples in the wrong group, so it can't possibly be correct. Please move all known examples to the correct side and reconsider your answer before continuing.");
+	    return;
+	}
+    }
+    for(var i=0; i<poorgroup.length;i++){
+	if(knownids.indexOf(poorgroup[i].idno)>1&&richids.indexOf(poorgroup[i].idno)>=0){
+	    alert("Your answer has some known examples in the wrong group, so it can't possibly be correct. Please move all known examples to the correct side and reconsider your answer before continuing.");
+	    return;
+	}
+    }
+feedback()
 }
-
-function response(type){
-
-if(type=="pos")testresponses.push(1);
-else testresponses.push(0);
-
-if(type==testtype)correct++;
-nexttest();
-}
-
-function nexttest(){
-if(testsequence[testcounter]>.5)testtype="pos";//hmmm doesn't match prob-in-world, is this important?
-else testtype="neg";
-
-testcounter++;
-
-document.getElementById("posresponse").disabled=true;
-document.getElementById("negresponse").disabled=true;
-
-var totest = nextExample(testtype); //data to save
-testitems.push(totest);
-if(testtype=="pos")testans.push(1);
-else testans.push(0);
-
-drawflower(totest,document.getElementById("testcanvas"));
-testindex++;
-//alert(testindex+" of "+hmtests+", "+correct+" correct");//diag
-if(testindex>hmtests)testfeedback();//testindex inits to 0, but increments before checking so 1-indexed.
-else enableresponse();
-}
-
-function enableresponse(){
-setTimeout(function(){
-document.getElementById("posresponse").disabled=false;
-document.getElementById("negresponse").disabled=false;
-},enableresponsedelay);
-}
-
-function testfeedback(){
-var viewstring= "";
-if(whichtrial==0)viewstring+="<h1>Your score would have been:</h1>";
-viewstring+="<table class=\"centered\">";
-viewstring+="<tr><td>Correct:</td><td>"+correct+"/10</td></tr>";
-viewstring+="<tr><td>Examples Seen:</td><td>"+hmsamples+"</td></tr>";
-
-if(hmsamples==0)correct=0;//no 'infinite' speed-accuracy feedback for hmsamples=0 thanks. Maybe should disable go to test button initially, enable on first example request?
-viewstring+="<tr><td>Efficiency Score:(correct/examples)*100</td><td>"+Math.round((correct/hmsamples)*100)+"</td></tr>";
-viewstring+="<tr><td colspan=\"2\"><button onclick=\"tweenscreen()\">Continue!</button></td>";
-viewstring+="</table>";
-
-savetrial();//instead of adding to viewstring...
-
-document.getElementById("viewdiv").innerHTML=viewstring;
+function feedback(){
+    correctcount=0;
+    for(var i=0;i<richgroup.length;i++)if(richids.indexOf(richgroup[i].idno)>=0)correctcount++;
+    for(var i=0;i<poorgroup.length;i++)if(richids.indexOf(poorgroup[i].idno)<0)correctcount++;
+    var fdbk="<p>You got "+correctcount+" out of "+hmtotal+" in the right group.</p>"
+    fdbk+=""+knownids.length+" of these were known examples, so your successful-inference score on this round is <h3>"+100*(correctcount-knownids.length)/hmtotal+"%</h3><br/><button onclick=\"tweenscreen()\">Continue!</button>"
+    document.getElementById("viewdiv").innerHTML=fdbk;
 }
 
 function nexttrial(){//SAVE DATA? reset everything that needs it...
 whichtrial++;
 if(whichtrial==3){finish(); return}
-//prototype = new makeflower(canvaswidth/2,canvasheight/2,runif(0,flowermax),rndcol("00","ff",stimcol[whichtrial]),runif(0,flowermax),runif(0,flowermax));
     setRule();
 drawposrow = 0;
 drawposcol = 0;
@@ -663,10 +538,14 @@ drawnegcol = 0;
 sample=getSample();
 poscounter = 0;
 negcounter = 0;
-testindex=0;
-correct=0;
-hmsamples=0;
 
+    hmtotal=0;
+    richgroup.length=0;
+    poorgroup.length=0;
+    knownids.length=0;
+    hmrich=0;
+    richids.length=0;
+    poorids.length=0;
 showtrial();
 }
 function finish(){
@@ -679,7 +558,7 @@ var instructionbutton = "<button id=\"instbutton\" onclick=\"instructions()\">Co
 var instructionchapters= ["<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 10 minutes. That includes a short quiz about these instructions, and three runs through a classification task where your goal is to figure out how to tell the difference between two different kinds of plankton.</p>"+instructionbutton,
 			   "<p>In this study, some plankton are selenoid-rich and some are selenoid-poor. Xabanta has discovered a medical use for selenoid in making artificial corneas, so it's interested in collecting selenoid-rich plankton.</p><p>Xabanta's research ship collects large amounts of plankton for you to study, and can pre-sort the sample into selenoid-rich and selenoid-poor groups. Individual plankton can take on a variety of different appearances. They vary in colour, number of petal-like arms, and body size. Previous work has shown that about "+percentrich+"% of the plankton are selenoid-rich.</p>"+instructionbutton,
 			   "<p>A typical unsorted sample of plankton might look something like this.<img style=\"display:block; margin-left:auto; margin-right:auto\" src=\"js/planktonworld.png\"></p><p>Your job is to look through a <em>sorted</em> sample and work out what kinds of plankton are selenoid-rich. Each of the three runs will be with a different colour plankton, with a different selenoid pattern.</p>"+instructionbutton,
-			   "<p>The main task has two parts. The first part is the research phase. You'll be able to request examples of either selenoid-rich or selenoid-poor plankton using the buttons in the centre of the screen. You can only view up to ten example plankton, so choose carefully! When you're done, click 'Go to test!' button at the lower centre of the screen to go to the second part, the test phase. You'll be shown "+hmtests+" new plankton examples and asked to label them as selenoid-rich or selenoid-poor. After you've labelled all the plankton, you'll be given a score that you can maximize by getting a high accuracy on the test phase while asking for few examples during the research phase. </p><p>You'll get three shots at the main task: the first one is a practice run, so you can try out the buttons and see what the plankton look like. The pattern of which plankton are selenoid-rich will change each time, so you'll have to figure it out again in each run, but the rest of the task is the same.</p>"+instructionbutton,
+			   "<p>The main task has two parts. The first part is the research phase. You'll be able to request examples of either selenoid-rich or selenoid-poor plankton using the buttons in the centre of the screen. You can only view up to ten example plankton, so choose carefully! When you're done, click 'Go to test!' button at the lower centre of the screen to go to the second part, the test phase. You'll be shown new plankton examples and asked to label them as selenoid-rich or selenoid-poor. After you've labelled all the plankton, you'll be given a score that you can maximize by getting a high accuracy on the test phase while asking for few examples during the research phase. </p><p>You'll get three shots at the main task: the first one is a practice run, so you can try out the buttons and see what the plankton look like. The pattern of which plankton are selenoid-rich will change each time, so you'll have to figure it out again in each run, but the rest of the task is the same.</p>"+instructionbutton,
 "<p><p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 10 minutes.</p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>"
 ];
 
@@ -688,7 +567,7 @@ var instructioncounter=0;
 function instructions(){
     document.getElementById("viewdiv").innerHTML=instructionchapters[instructioncounter];
     instructioncounter++;
-// document.getElementById("viewdiv").innerHTML= "<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 10 minutes. That includes a short quiz about these instructions, and three runs through a classification task where your goal is to figure out how to tell the difference between two different kinds of plankton. In this study, some plankton are selenoid-rich and some are selenoid-poor. Xabanta has discovered a medical use for selenoid in making artificial corneas, so it's interested in collecting selenoid-rich plankton.</p><p>Xabanta's research ship collects large amounts of plankton for you to study, and can pre-sort the sample into selenoid-rich and selenoid-poor groups. There are many different species of plankton. You can tell the species apart by looking at their colour, number of petal-like arms, and body size. Each species has its own unique combination of these features. The different species are equally common, so all the combinations of features are equally likely. Previous work has shown that "+percentrich+"% percent of species are selenoid rich.</p><p>An unsorted sample of plankton might look something like this.<img style=\"display:block; margin-left:auto; margin-right:auto\" src=\"js/planktonworld.png\"></p><p>Your job is to look through a <em>sorted</em> sample and work out what kinds of plankton are selenoid-rich. Each of the three runs will be with a different colour plankton, with a different selenoid pattern.</p><p>The main task has two parts. The first part is the research phase. You'll be able to request examples of either selenoid-rich or selenoid-poor plankton using the buttons in the centre of the screen. You can only view 10 examples, so choose carefully! To continue, hit the 'Go to test!' button at the lower centre of the screen to go to the second part, the test phase. You'll be shown "+hmtests+" new plankton examples and asked to label them as selenoid-rich or selenoid-poor. After you've labelled all the plankton, you'll be given a score that you can maximize by getting a high accuracy on the test phase while asking for few examples during the research phase. </p><p>You'll get three shots at the main task: the first one is a practice run, so you can try out the buttons and see what the plankton look like. The pattern of which plankton are selenoid-rich will change each time, so you'll have to figure it out again in each run, but the rest of the task is the same.</p><p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 10 minutes.</p><p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>";
+// document.getElementById("viewdiv").innerHTML= "<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 10 minutes. That includes a short quiz about these instructions, and three runs through a classification task where your goal is to figure out how to tell the difference between two different kinds of plankton. In this study, some plankton are selenoid-rich and some are selenoid-poor. Xabanta has discovered a medical use for selenoid in making artificial corneas, so it's interested in collecting selenoid-rich plankton.</p><p>Xabanta's research ship collects large amounts of plankton for you to study, and can pre-sort the sample into selenoid-rich and selenoid-poor groups. There are many different species of plankton. You can tell the species apart by looking at their colour, number of petal-like arms, and body size. Each species has its own unique combination of these features. The different species are equally common, so all the combinations of features are equally likely. Previous work has shown that "+percentrich+"% percent of species are selenoid rich.</p><p>An unsorted sample of plankton might look something like this.<img style=\"display:block; margin-left:auto; margin-right:auto\" src=\"js/planktonworld.png\"></p><p>Your job is to look through a <em>sorted</em> sample and work out what kinds of plankton are selenoid-rich. Each of the three runs will be with a different colour plankton, with a different selenoid pattern.</p><p>The main task has two parts. The first part is the research phase. You'll be able to request examples of either selenoid-rich or selenoid-poor plankton using the buttons in the centre of the screen. You can only view 10 examples, so choose carefully! To continue, hit the 'Go to test!' button at the lower centre of the screen to go to the second part, the test phase. You'll be shown new plankton examples and asked to label them as selenoid-rich or selenoid-poor. After you've labelled all the plankton, you'll be given a score that you can maximize by getting a high accuracy on the test phase while asking for few examples during the research phase. </p><p>You'll get three shots at the main task: the first one is a practice run, so you can try out the buttons and see what the plankton look like. The pattern of which plankton are selenoid-rich will change each time, so you'll have to figure it out again in each run, but the rest of the task is the same.</p><p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 10 minutes.</p><p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>";
 }
 
 function demographics(){
