@@ -74,35 +74,44 @@ var knownids=[];
 var richids=[];
 var poorids=[];
 var startasrich;
+var correctcount=0;
 function setstart(){//might want to change this to randomize start side for 50%... now it's always all-rich.
     if(percentrich>=50)startasrich=true;
     else startasrich=false;
 } 
 setstart();
 function initgroups(){
+    var allstim = [];
+
     for(var i=0;i<petallevels.length;i++){
 	for(var j=0;j<ringlevels.length;j++){
 	    for(var k=0;k<collevels.length;k++){
 		//makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
 		thisflower=new makeflower(canvaswidth/2,canvasheight/2,petallevels[i],ringlevels[j],collevels[k],sizeparam);
-		if(startasrich==true)richgroup.push(thisflower);
-		else poorgroup.push(thisflower);
+//		if(hmtotal%2==0)richgroup.push(thisflower);
+//		else poorgroup.push(thisflower);
+		allstim.push(thisflower);
 		hmtotal++;
 		if(currentrule.passes(thisflower)){
 		    hmrich++; 
 		    richids.push(thisflower.idno);
 		}
 		else poorids.push(thisflower.idno);
-	    }
-	}
+	    }//collevels
+	}//ringlevels
+    }//petallevels
+    allstim=shuffle(allstim);
+    for(var i=0;i<allstim.length;i++){
+	if(i%2==0)richgroup.push(allstim[i]);
+	else poorgroup.push(allstim[i]);
     }
-}
+}//initgroups
 
 var posleft = Math.random()>.5;
-var drawposrow = 0;
-var drawposcol = 0;
-var drawnegrow = 0;
-var drawnegcol = 0;
+// var drawposrow = 0;
+// var drawposcol = 0;
+// var drawnegrow = 0;
+// var drawnegcol = 0;
 
 var sample=getSample();
 var poscounter = 0;
@@ -122,22 +131,27 @@ function setRule(){
 
 //DATA STORE:
 var requests = []; // code 1 for rich, 0 for poor
-var examplesseen = []; //plankton flower objects
-var testitems = []; //plankton flower objects
-var testans = [];//1 for rich, 0 for poor
-var testresponses=[]; //1 for rich, 0 for poor
+var switches = [];
+var allactions = [];//Key: P=request rich, N=request poor, p=swap from rich side to poor side, n=swap from poor side to rich side, S submit.
+//var examplesseen = []; //plankton flower objects
+//var testitems = []; //plankton flower objects
+//var testans = [];//1 for rich, 0 for poor
+//var testresponses=[]; //1 for rich, 0 for poor
 
 function cleardata(){
-requests.length=0; //is this really the javascript way of clearing an array?
-examplesseen.length=0;
-testitems.length=0;
-testans.length=0;
-testresponses.length=0;;
+    requests.length=0; //is this really the javascript way of clearing an array?
+    switches.length=0;
+    allactions.length=0;
+    //examplesseen.length=0;
+//    testitems.length=0;
+ //   testans.length=0;
+  //  testresponses.length=0;;
 }
 
 function savetrial(){
     timelogged = new Date().getTime();
     function arrtostring(arr){
+	console.log(arr);//diag
 	var arrstring="";
 	for(var i=0;i<arr.length;i++){
 	    arrstring+=arr[i];
@@ -156,28 +170,14 @@ function savetrial(){
     exp_data.posleft=posleft;
     exp_data.sparsitylevel=sparsitylevel[0];
     exp_data.requests=arrtostring(requests);
-
-    var examplesseen_storestring="";
-    for(var i=0;i<examplesseen.length;i++){
-	examplesseen_storestring+=examplesseen[i].toString;
-	if(i<examplesseen.length-1)examplesseen_storestring+=",";
-    }
-    exp_data.examplesseen=examplesseen_storestring;
-    
-
-    var testitem_storestring="";
-    for(var i=0;i<testitems.length;i++){
-	testitem_storestring+=testitems[i].toString;
-	if(i<testitems.length-1)testitem_storestring+=",";
-    }
-    exp_data.testitems=testitem_storestring;
-    testans.length=testans.length-1; //one last test item is generated, but never shown. disregard.
-    exp_data.testans=arrtostring(testans);
-    exp_data.testresponses=arrtostring(testresponses);
-
+    exp_data.causedswitch=arrtostring(switches);
+    exp_data.actions=arrtostring(allactions);
+    exp_data.correct=correctcount;
+    exp_data.posgroup=arrtostring(richgroup);
+    exp_data.neggroup=arrtostring(poorgroup);
     // save trial data
     saveData(exp_data);
-
+    console.log(exp_data);//diag
 cleardata();//after saving, ready for next trial if there is one.
 }
 
@@ -219,7 +219,7 @@ this.collevel = collevel;
     if(stimcol[whichtrial]=="green")this.colstring="#00"+collevel.toString(16)+"00";
     if(stimcol[whichtrial]=="blue")this.colstring="#0000"+collevel.toString(16);
 this.size = sizeparam;
-this.toString=petallevel+":"+ringlevel+":"+collevel+":"+sizeparam;
+    this.toString=function(){return petallevel+":"+ringlevel+":"+collevel+":"+sizeparam;}
 }
 
 function drawflower(aflower, acanvas){
@@ -320,7 +320,7 @@ t+="</table>";
 }
 
 function getSample(){
-    var population = []
+    var population = [];
     //makeflower(x, y, petallevel, ringlevel, collevel, sizeparam){
     for(var i=0;i<populationsize;i++)population.push(new makeflower(canvaswidth/2,canvasheight/2,shuffle(petallevels)[0],shuffle(ringlevels)[0],shuffle(collevels)[0],sizeparam));
     
@@ -363,12 +363,14 @@ var currentrule;//=rules75[0];
 
 function swapout(cellcount,origin){
     if(origin=="pos"){
+	allactions.push("p");
 	if(cellcount>=richgroup.length)return;
 	var temp = richgroup[cellcount];
 	poorgroup.push(temp);
 	richgroup.splice(cellcount,1);
     }
     if(origin=="neg"){
+	allactions.push("n");
 	if(cellcount>=poorgroup.length)return;
 	var temp=poorgroup[cellcount];
 	richgroup.push(temp);
@@ -377,18 +379,8 @@ function swapout(cellcount,origin){
     redraw();
 }
 function redraw(){
-    if(percentrich==75){
 	listtodrawntable(8,8,richgroup,"pos");
-	listtodrawntable(4,4,poorgroup,"neg");
-    }
-    if(percentrich==50){
-	    listtodrawntable(4,8,poorgroup,"neg");	
-	    listtodrawntable(8,8,richgroup,"pos");
-    }
-    if(percentrich==25){
-	listtodrawntable(4,4,richgroup,"pos");
 	listtodrawntable(8,8,poorgroup,"neg");
-    }
 }
 
 function listtodrawntable(rows,cols,planktonlist,targdiv){
@@ -418,37 +410,46 @@ function listtodrawntable(rows,cols,planktonlist,targdiv){
 }
 
 function seeExample(type){
+    var switchflag=false;
     if(type=="pos"){
+	allactions.push("P");
+	requests.push(1);
 	richids = shuffle(richids);
 	for(var i=0;i<richids.length;i++){
 	    if(knownids.indexOf(richids[i])<0){
 		knownids.push(richids[i]);
 		for(var j=0;j<poorgroup.length;j++){
 		    if(poorgroup[j].idno==richids[i]){
-			richgroup.push(poorgroup[j]);
-			poorgroup.splice(j,1);
+			//richgroup.push(poorgroup[j]); //don't auto move stuff: closer to battleships setup.
+			//poorgroup.splice(j,1);
+			switches.push(1);
+			switchflag=true;
 		    }//if found rich-example, swap into richgroup
 		}//for everything currently in poor-group
+		if(switchflag==true)switches.push(0);
 		break;
 	    }//if richids[i] is not already in knownids
 	}//for each index in richids 
-    if(richgroup.length>64*percentrich/100&&startasrich==false)alert("The new selenoid rich example cannot be shown because that group is already full. Please move something from the selenoid rich group to the selenoid poor group to free up space for the new example.");
     }//if pos requested
     else{
+	allactions.push("N");
+	requests.push(0);
 	poorids=shuffle(poorids);
 	for(var i=0;i<poorids.length;i++){
 	    if(knownids.indexOf(poorids[i])<0){
 		knownids.push(poorids[i]);
 		for(var j=0;j<richgroup.length;j++){
 		    if(richgroup[j].idno==poorids[i]){
-			poorgroup.push(richgroup[j]);
-			richgroup.splice(j,1);
+			//poorgroup.push(richgroup[j]); //don't auto-move stuff, closer to battleships.
+			//richgroup.splice(j,1);
+			switches.push(1);
+			switchflag=true;
 		    }//if found poor example, swap into poor group
 		}//for everything currently in rich group
+		if(switchflag==false)switches.push(0);
 		break;
 	    }//if poorids[i] not already in knownids
 	}//for each index in poorids
-    if(poorgroup.length>64*(100-percentrich)/100&&startasrich==true)alert("The new selenoid poor example cannot be shown because that group is already full. Please move something from the selenoid poor group to the selenoid rich group to free up space for the new example.");
     }//if neg requested
     redraw();
 }//end seeExample
@@ -474,8 +475,8 @@ function showtrial(){
     atrial+="Move plankton between groups by clicking on them, or request examples using the buttons below. When you're confident you have moved all the plankton to the correct group, click 'Submit answer' to continue. ";
     atrial+="</td></tr>";
     atrial+="<tr>"
-    if(posleft)atrial+="<td style=\"float:left\"><h4>Selenoid rich group:"+percentrich+"%</h4></td><td></td><td style=\"float:right\"><h4>Selenoid poor group:"+(100-percentrich)+"%</h4></td>";
-    else atrial+="<td style=\"float:left\"><h4>Selenoid poor group:"+(100-percentrich)+"%</h4></td><td></td><td style=\"float:right\"><h4>Selenoid rich group:"+percentrich+"%</h4></td>";
+    if(posleft)atrial+="<td style=\"float:left\"><h4>Selenoid rich group: "+percentrich+"% ("+64*percentrich/100/8+" full rows) </h4></td><td></td><td style=\"float:right\"><h4>Selenoid poor group: "+(100-percentrich)+"% ("+64*(100-percentrich)/100/8+" full rows)</h4></td>";
+    else atrial+="<td style=\"float:left\"><h4>Selenoid poor group:"+(100-percentrich)+"% ("+64*(100-percentrich)/100/8+" full rows)</h4></td><td></td><td style=\"float:right\"><h4>Selenoid rich group:"+percentrich+"% ("+64*percentrich/100/8+" full rows)</h4></td>";
     atrial+="</tr>"
     atrial+="<tr>";
     atrial+="<td>";
@@ -499,6 +500,7 @@ function showtrial(){
 }
 
 function submit(){
+    allactions.push("S");
 //check the submission is even possible...
     if(richgroup.length!=64*percentrich/100){
 	alert("Your answer has the wrong number of plankton in each group, so it can't possibly be correct.Please move some plankton from the overfull side to the underfull side and reconsider your answer before continuing.");
@@ -523,7 +525,8 @@ function feedback(){
     for(var i=0;i<richgroup.length;i++)if(richids.indexOf(richgroup[i].idno)>=0)correctcount++;
     for(var i=0;i<poorgroup.length;i++)if(richids.indexOf(poorgroup[i].idno)<0)correctcount++;
     var fdbk="<p>You got "+correctcount+" out of "+hmtotal+" in the right group.</p>"
-    fdbk+=""+knownids.length+" of these were known examples, so your successful-inference score on this round is <h3>"+100*(correctcount-knownids.length)/hmtotal+"%</h3><br/><button onclick=\"tweenscreen()\">Continue!</button>"
+    fdbk+=""+knownids.length+" of these were known examples, so your successful-inference score on this round is <h3>"+100*(correctcount-knownids.length)/hmtotal+"%</h3><br/><button onclick=\"tweenscreen()\">Continue!</button>";
+    savetrial();
     document.getElementById("viewdiv").innerHTML=fdbk;
 }
 
@@ -531,10 +534,10 @@ function nexttrial(){//SAVE DATA? reset everything that needs it...
 whichtrial++;
 if(whichtrial==3){finish(); return}
     setRule();
-drawposrow = 0;
-drawposcol = 0;
-drawnegrow = 0;
-drawnegcol = 0;
+//drawposrow = 0;
+//drawposcol = 0;
+//drawnegrow = 0;
+//drawnegcol = 0;
 sample=getSample();
 poscounter = 0;
 negcounter = 0;
@@ -574,7 +577,6 @@ function demographics(){
 document.getElementById("viewdiv").innerHTML= "<table><tr><td>Please fill out these demographic details. This is just for our records, and it is all kept separate from the study data. As long as you finish the experiment you will get paid no matter what you put here, so please be honest.<br/></td></tr>"+
 "<tr><td>&nbsp</td></tr>"+
 "<tr><td>"+
-"Please enter your Amazon ID:<input type=\"text\" id=\"amazonid\"></td></tr><tr><td>"+
 "Gender: <input type=\"radio\" name=\"gender\" id=\"male\" value=\"male\">&nbspMale&nbsp&nbsp"+
 "<input type=\"radio\" name=\"gender\" id=\"fem\" value=\"female\">&nbspFemale&nbsp&nbsp"+
 "<input type=\"radio\" name=\"gender\" id=\"other\" value=\"other\">&nbspOther"+
@@ -917,10 +919,7 @@ function demographicsvalidate(){
     var country = document.getElementById("countrypicker").value;
     var countryflag = country.length>0;
     demostring+=country+":";
-    var amazonid = document.getElementById("amazonid").value;
-    var idflag = amazonid.length>0;
-    demostring+=amazonid;
-    if(genderflag&&langflag&&ageflag&&countryflag&&idflag){
+    if(genderflag&&langflag&&ageflag&&countryflag){
 	demographicinfo=demostring;
 	showtrial();
     }    
@@ -951,7 +950,6 @@ document.write("<div id=\"infodiv\"></div><br/><div id=\"viewdiv\"></div>");//di
 
 //diag start points:
 showtrial();//just go to task
-//gotest();
 //demographics();
 //tweenscreen();
 }
