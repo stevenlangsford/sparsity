@@ -588,12 +588,12 @@ document.getElementById("viewdiv").innerHTML="<p>You're done! Thank you for part
 }
 
 var instructionbutton = "<button id=\"instbutton\" onclick=\"instructions()\">Continue</button>";
-var instructionchapters= ["<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 10 minutes. That includes a short quiz about these instructions, and three runs through a sorting task where your goal is to figure out how to tell the difference between two different kinds of plankton.</p>"+instructionbutton,
+var instructionchapters= ["<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 15 minutes. That includes a short quiz about these instructions, and three runs through a sorting task where your goal is to figure out how to tell the difference between two different kinds of plankton.</p>"+instructionbutton,
 			   "<p>In this study, some plankton are selenoid-rich and some are selenoid-poor. Xabanta has discovered a medical use for selenoid in making artificial corneas, so it's interested in collecting selenoid-rich plankton.</p>Individual plankton can take on a variety of different appearances. They vary in colour, number of petal-like arms, and body size. Previous work has shown that about "+percentrich+"% of plankton are selenoid-rich.</p>"+instructionbutton,
-			  "<p>In the main task, you'll be shown two buckets of plankton, one labelled 'Selenoid rich' and the other labeled 'Selenoid poor'. The plankton start off split randomly between the two buckets, and your job is to swap them around so that all the selenoid-rich plankton are in the 'Selenoid rich' bucket and all the selenoid-poor plankton are in the 'Selenoid poor' bucket.</p><p>There are two different actions you can take to make that happen. You can swap plankton between the two buckets by clicking on them. You can also ask for one of the plankton to be labeled for you. You choose which type of plankton will be revealed, a selenoid-rich or a selenoid-poor one, by clicking on the request button you want. These buttons are located at the bottom of the screen. When you're confident you have the plankton all sorted, click the 'Submit answer' button, also at the bottom of the screen.</p>"+instructionbutton,
-			  "<p>There are a couple things you need to be careful of when submitting an answer.</p><p>Your answer must be realistic. Your answer must have the right number of plankton in each group, because you already know that "+percentrich+"% of plankton are selenoid rich. Also, labeled examples must be swapped into the right group.</p><p>Your answer will be scored: the final score is calculated from the number of unlabeled plankton that are correctly sorted. If you request too many examples, your score will suffer even if you get everything right. If you don't request enough examples, you're likely to leave too many plankton in the wrong group. If you can work out the pattern from a small number of requests, you will score well!</p><p>You'll get three tries at the task. The first is a practice run, followed by two real runs. The pattern of selenoid-rich plankton is different each time, so you'll have to figure each one out independently. Good luck!</p>"+instructionbutton,
+			  "<p>In the main task, you'll be shown two buckets of plankton, one labelled 'Selenoid rich' and the other labelled 'Selenoid poor'. The plankton start off randomly split between the two buckets, and your job is to swap them around so that all the selenoid-rich plankton are in the 'Selenoid rich' bucket and all the selenoid-poor plankton are in the 'Selenoid poor' bucket.</p><p>There are two different actions you can take to make that happen. You can swap plankton between the two buckets by clicking on them. You can also ask for one of the plankton to be labelled for you. You choose which type of plankton will be labelled, a selenoid-rich or a selenoid-poor one, by clicking on the request button you want. These buttons are located at the bottom of the screen. When you're confident you have the plankton all sorted, click the 'Submit answer' button, also at the bottom of the screen.</p>"+instructionbutton,
+			  "<p>There are a couple things you need to be careful of when submitting an answer.</p><p>Your answer must be realistic. Your answer must have the right number of plankton in each group, because you already know that "+percentrich+"% of plankton are selenoid rich. Also, labelled examples must be swapped into the right group.</p><p>The most important thing to remember is that your answer will be scored! The final score is calculated from the number of unlabelled plankton that are correctly sorted. If you request too many examples, your score will suffer even if you get everything right. If you don't request enough examples, you're likely to leave too many plankton in the wrong group. If you can work out the pattern from a small number of label requests, you will score well!</p><p>You'll get three tries at the task. The first is a practice run, followed by two real runs. The pattern of selenoid-rich plankton is different each time, so you'll have to figure each one out independently. Good luck!</p>"+instructionbutton,
 
-"<p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 10 minutes.</p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>"
+"<p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 15 minutes.</p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>"
 ];
 
 var instructioncounter=0;
@@ -876,7 +876,7 @@ return "<select data-placeholder=\"Choose a Country...\" id=\"countrypicker\">"+
 
 function instructionquiz(){
 scroll(0,0);
-var plausible = [25,50,75,90];
+//var plausible = [25,50,75,90];
 
 document.getElementById("viewdiv").innerHTML="<h3>Are you ready?</h3><br/>"+
 "<strong>Which type of plankton is commercially valuable to Xabanta?</strong></br>"+
@@ -891,16 +891,16 @@ document.getElementById("viewdiv").innerHTML="<h3>Are you ready?</h3><br/>"+
 "<input type=\"radio\" name=\"howsparse\" id=\"seventyfivepc\" value=\"70\"/>&nbsp 75% of plankton is selenoid-rich<br/>"+
 "<input type=\"radio\" name=\"howsparse\" id=\"ninetypc\" value=\"90\"/>&nbsp 90% of plankton is selenoid-rich<br/>"+
 "</p>"+
-"<p><strong>What factors are used to calculate your final score?</strong></br>"+
-"<input type=\"radio\" name=\"howsample\" id=\"timelimit\" value=\"time\"/>&nbsp Number correct divided by time taken.<br/>"+
-"<input type=\"radio\" name=\"howsample\" id=\"limfifty\" value=\"fifty\"/>&nbsp Number of rich plankton correctly in the rich group minus the number of rich plankton incorrectly in the poor group.<br/>"+
-"<input type=\"radio\" name=\"howsample\" id=\"suibian\" value=\"suibian\"/>&nbsp <br/>"+
-"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp Swap plankton between groups by clicking on them, and ask for labeled examples using buttons at the bottom of the screen.<br/></p>"+
-"<p><strong>What will you be asked to do in the test phase?</strong></br>"+
-"<input type=\"radio\" name=\"howtest\" id=\"label\" value=\"label\"/>&nbsp Label new plankton examples as selenoid-rich or selenoid-poor.<br/>"+
-"<input type=\"radio\" name=\"howtest\" id=\"pick\" value=\"pick\"/>&nbsp Pick out the selenoid-rich plankton from a field of random examples.<br/>"+
-"<input type=\"radio\" name=\"howtest\" id=\"write\" value=\"write\"/>&nbsp Write a short paragraph describing what kind of plankton are selenoid-rich.<br/>"+
-"<input type=\"radio\" name=\"howtest\" id=\"points\" value=\"points\"/>&nbsp The same task as in the research phase, but while being scored for accuracy.<br/></p>"+
+"<p><strong>What information is available to help you work out which plankton are selenoid-rich?</strong></br>"+
+"<input type=\"radio\" name=\"howsample\" id=\"timelimit\" value=\"time\"/>&nbsp Buttons at the bottom of the screen will allow you to generate new examples of either type of plankton.<br/>"+
+"<input type=\"radio\" name=\"howsample\" id=\"limfifty\" value=\"fifty\"/>&nbsp A button at the bottom of the screen will allow you to view a list of facts about plankton.<br/>"+
+"<input type=\"radio\" name=\"howsample\" id=\"suibian\" value=\"suibian\"/>&nbsp A button at the bottom of the screen will allow you to remove one selenoid-poor plankton from the collection. <br/>"+
+"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp Buttons at the bottom of the screen will allow you to see the correct label for one example of either of the plankton types.<br/></p>"+
+"<p><strong>What will your final score depend on?</strong></br>"+
+"<input type=\"radio\" name=\"howtest\" id=\"label\" value=\"label\"/>&nbsp The number of unlabelled plankton that are in the correct group.<br/>"+
+"<input type=\"radio\" name=\"howtest\" id=\"pick\" value=\"pick\"/>&nbsp The number of selenoid-rich plankton that are in the correct group.<br/>"+
+"<input type=\"radio\" name=\"howtest\" id=\"write\" value=\"write\"/>&nbsp The number of correctly sorted plankton divided by the time taken.<br/>"+
+"<input type=\"radio\" name=\"howtest\" id=\"points\" value=\"points\"/>&nbsp The number of correctly sorted plankton only.<br/></p>"+
 "<p><strong>How much practice do you get?</strong></br>"+
 "<input type=\"radio\" name=\"practice\" id=\"nopractice\" value=\"nopractice\"/>&nbsp No practice<br/>"+
 "<input type=\"radio\" name=\"practice\" id=\"prrdiff\" value=\"prrdiff\"/>&nbsp One practice run, then two real test runs, each on different plankton with different selenoid patterns<br/>"+
@@ -975,8 +975,10 @@ instructions();//actual start point
     var zoomflag=false;
     document.onkeypress=function(e){
 	e = e||window.event;
-	if(e.keyCode==38&&zoomflag==false){
-	    showtrial();
+//	console.log(e.keyCode);
+	if(zoomflag==false){
+	    if(e.keyCode==38)showtrial();
+//	    if(e.keyCode==40)instructionquiz();
 	    zoomflag=true;//not sure how showtrial() behaves if you call it instead of refresh page... 
 	}//just go to task
     };
