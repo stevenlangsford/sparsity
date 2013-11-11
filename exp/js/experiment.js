@@ -84,6 +84,11 @@ var poorcolor="#990099";
 var whatswapped = [];
 var whatlabelled = [];
 
+function lookupID(id){
+    for(var i=0;i<poorgroup.length;i++)if(poorgroup[i].idno==id)return poorgroup[i];
+    for(var i=0;i<richgroup.length;i++)if(richgroup[i].idno==id)return richgroup[i];
+}
+
 function setstart(){//might want to change this to randomize start side for 50%... now it's always all-rich.
     if(percentrich>=50)startasrich=true;
     else startasrich=false;
@@ -151,6 +156,8 @@ function cleardata(){
     requests.length=0; //is this really the javascript way of clearing an array?
     switches.length=0;
     allactions.length=0;
+    whatlabelled.length=0;
+    whatswapped.length=0;
     //examplesseen.length=0;
     //    testitems.length=0;
     //   testans.length=0;
@@ -391,12 +398,14 @@ function swapout(cellcount,origin){
 	var temp = richgroup[cellcount];
 	poorgroup.push(temp);
 	richgroup.splice(cellcount,1);
+	whatswapped.push(temp.toString());
     }
     if(origin=="neg"){
 	allactions.push("n");
 	if(cellcount>=poorgroup.length)return;
 	var temp=poorgroup[cellcount];
 	richgroup.push(temp);
+	whatswapped.push(temp.toString());
 	poorgroup.splice(cellcount,1);
     }
     redraw();
@@ -473,6 +482,7 @@ function seeExample(type){
 	for(var i=0;i<richids.length;i++){
 	    if(knownids.indexOf(richids[i])<0){
 		knownids.push(richids[i]);
+		whatlabelled.push(lookupID(richids[i]).toString());
 		for(var j=0;j<poorgroup.length;j++){
 		    if(poorgroup[j].idno==richids[i]){
 			//richgroup.push(poorgroup[j]); //no autoswap 
@@ -493,6 +503,7 @@ function seeExample(type){
 	for(var i=0;i<poorids.length;i++){
 	    if(knownids.indexOf(poorids[i])<0){
 		knownids.push(poorids[i]);
+		whatlabelled.push(lookupID(poorids[i]).toString());
 		for(var j=0;j<richgroup.length;j++){
 		    if(richgroup[j].idno==poorids[i]){
 			//poorgroup.push(richgroup[j]); no autoswap
