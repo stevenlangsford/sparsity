@@ -185,9 +185,9 @@ function savetrial(){
     exp_data.feedbackscore=(correctcount*10)-(knownids.length*20);//magic number, check consistency?
     exp_data.ansposgroup=arrtostring(richgroup);
     exp_data.ansneggroup=arrtostring(poorgroup);
-    exp_data.stimcolors=arrstring(stimcol)
-    exp_data.whatswapped=arrstring(whatswapped);
-    exp_data.whatlabelled=arrastring(whatlabelled);
+    exp_data.stimcolors=arrtostring(stimcol)
+    exp_data.whatswapped=arrtostring(whatswapped);
+    exp_data.whatlabelled=arrtostring(whatlabelled);
 
     // save trial data
     saveData(exp_data);
@@ -929,10 +929,10 @@ function instructionquiz(){
 	"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp You can pay an expert to give the correct label for one example of either type of plankton.<br/></p>"+
 
     "<p><strong>What is the profit to Xabanta for each correctly sorted plankton?</strong></br>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"pick\" value=\"pick\"/>&nbsp $5<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"labal\" value=\"label\"/>&nbsp $10<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"write\" value=\"write\"/>&nbsp $15<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"points\" value=\"points\"/>&nbsp $20<br/></p>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit5\" value=\"pick\"/>&nbsp $5<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit10\" value=\"label\"/>&nbsp $10<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit15\" value=\"write\"/>&nbsp $15<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit20\" value=\"points\"/>&nbsp $20<br/></p>"+
 
     "<p><strong>How much does the expert charge to label a single plankton?</strong></br>"+
 	"<input type=\"radio\" name=\"howcharge\" id=\"cost5\" value=\"five\"/>&nbsp $5<br/>"+
@@ -955,7 +955,7 @@ function quizvalidate(){
 	if(percentrich==50) return "fiftypc";
 	if(percentrich==75) return "seventyfivepc";
     }
-    var valid=document.getElementById("rich").checked && document.getElementById(whichrichnessradio()).checked && document.getElementById("score").checked && document.getElementById("label").checked &&document.getElementById("cost20").checked && document.getElementById("prrdiff").checked;
+    var valid=document.getElementById("rich").checked && document.getElementById(whichrichnessradio()).checked && document.getElementById("score").checked && document.getElementById("profit10").checked &&document.getElementById("cost20").checked && document.getElementById("prrdiff").checked;
     if(valid){
 	demographics();
 
@@ -1008,7 +1008,7 @@ function runExp(){
     //RUN ON LOAD: ie main method
     document.write("<div id=\"infodiv\"></div><br/><div id=\"viewdiv\"></div>");//divs must exist before fncalls
 
-    //instructions();//actual start point
+    instructions();//actual start point
 
     //optional instrucion-skipping cheat: 38 is up arrow
     var zoomflag=false;
@@ -1023,7 +1023,7 @@ function runExp(){
     };
 
     //diag start points:
-    showtrial();//just go to task
+    //showtrial();//just go to task
     //demographics();
     //tweenscreen();
 }
