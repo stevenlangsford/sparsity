@@ -491,7 +491,7 @@ function seeExample(type){
 			switchflag=true;
 		    }//if found rich-example, swap into richgroup
 		}//for everything currently in poor-group
-		if(switchflag==true)switches.push(0);
+		if(switchflag==false)switches.push(0);
 		break;
 	    }//if richids[i] is not already in knownids
 	}//for each index in richids 
@@ -1022,16 +1022,16 @@ function runExp(){
     instructions();//actual start point
 
     //optional instrucion-skipping cheat: 38 is up arrow
-    var zoomflag=false;
-    document.onkeypress=function(e){
-	e = e||window.event;
-	//	console.log(e.keyCode);
-	if(zoomflag==false){
-	    if(e.keyCode==38)showtrial();
-	    //	    if(e.keyCode==40)instructionquiz();
-	    zoomflag=true;//not sure how showtrial() behaves if you call it instead of refresh page... 
-	}//just go to task
-    };
+    // var zoomflag=false;
+    // document.onkeypress=function(e){
+    // 	e = e||window.event;
+    // 	//	console.log(e.keyCode);
+    // 	if(zoomflag==false){
+    // 	    if(e.keyCode==38)showtrial();
+    // 	    //	    if(e.keyCode==40)instructionquiz();
+    // 	    zoomflag=true;//not sure how showtrial() behaves if you call it instead of refresh page... 
+    // 	}//just go to task
+    // };
 
     //diag start points:
     //showtrial();//just go to task
