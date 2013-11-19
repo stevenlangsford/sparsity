@@ -84,9 +84,17 @@ var poorcolor="#990099";
 var whatswapped = [];
 var whatlabelled = [];
 
+var richrequests = 0;
+var poorrequests = 0;
+
 function lookupID(id){
     for(var i=0;i<poorgroup.length;i++)if(poorgroup[i].idno==id)return poorgroup[i];
     for(var i=0;i<richgroup.length;i++)if(richgroup[i].idno==id)return richgroup[i];
+}
+
+function lookupGroup(id){
+   for(var i=0;i<poorgroup.length;i++)if(poorgroup[i].idno==id)return "poor";
+    for(var i=0;i<richgroup.length;i++)if(richgroup[i].idno==id)return "rich";
 }
 
 function setstart(){//might want to change this to randomize start side for 50%... now it's always all-rich.
@@ -158,10 +166,20 @@ function cleardata(){
     allactions.length=0;
     whatlabelled.length=0;
     whatswapped.length=0;
+
+    richrequests=0;
+    poorrequests=0;
     //examplesseen.length=0;
     //    testitems.length=0;
     //   testans.length=0;
     //  testresponses.length=0;;
+}
+
+function saveViewStatus(whatviewed){
+    var viewdata = {}
+    viewdata.whatviewed=whatviewed;
+    viewdata.id = subjectID;
+    saveData(viewdata);
 }
 
 function savetrial(){
@@ -473,7 +491,40 @@ function listtodrawntable(rows,cols,planktonlist,targdiv){
     }//for each plankton in list
 }
 
+
+var consultVisuals = "<h1>The expert is examining your plankton...</h1>";
+var trialvisholder ="";
+
+function consultDelay(reqtype){
+    document.getElementById("posreqbutton").disabled=true;
+    document.getElementById("negreqbutton").disabled=true;
+    document.getElementById("submitans").disabled=true;
+    console.log("disables complete");//diag
+    //put up 'thinking' visuals
+    trialvisholder=document.getElementById("trialwordsdiv").innerHTML;
+    document.getElementById("trialwordsdiv").innerHTML=consultVisuals;
+    
+//call return to trial (with new info) after delay
+    window.setTimeout(function(){seeExample(reqtype)},1000);
+}
+
 function seeExample(type){
+//erase thinking visuals
+    document.getElementById("trialwordsdiv").innerHTML=trialvisholder;    
+    console.log("seeExample called");//diag
+    document.getElementById("posreqbutton").disabled=false;
+    document.getElementById("negreqbutton").disabled=false;
+    document.getElementById("submitans").disabled=false;
+    
+
+    if(type=="pos"){
+	richrequests++;
+	if(richrequests>(64*percentrich/100))alert("All selenoid-rich plankton have already been revealed!");
+    }
+    else{
+	poorrequests++;
+	if(poorrequests>(64*(100-percentrich)/100))alert("All selenoid-poor plankton have already been revealed!");
+    }
     var switchflag=false;
     if(type=="pos"){
 	allactions.push("P");
@@ -493,9 +544,9 @@ function seeExample(type){
 		}//for everything currently in poor-group
 		if(switchflag==false)switches.push(0);
 		break;
-	    }//if richids[i] is not already in knownids
-	}//for each index in richids 
-    }//if pos requested
+	    }//end if richids[i] is not already in knownids
+	}//end for each index in richids 
+    }//end if pos requested
     else{
 	allactions.push("N");
 	requests.push(0);
@@ -521,6 +572,7 @@ function seeExample(type){
 }//end seeExample
 
 function showtrial(){
+    saveViewStatus("Task_Started");
     feedbackmode=false;
     richgroup.length=0;
     poorgroup.length=0;
@@ -531,8 +583,8 @@ function showtrial(){
     //    rebalance();
 
     var buttcol="#999999";
-    var posbutton = "<button onclick=\"seeExample('pos')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p><p style=\"color:"+richcolor+"\"> <strong>selenoid rich</strong></p> label</button>";
-    var negbutton = "<button onclick=\"seeExample('neg')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p> <p style=\"color:"+poorcolor+"\"><strong> selenoid poor</strong></p> label</button>";
+    var posbutton = "<button id=\"posreqbutton\" onclick=\"consultDelay('pos')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p><p style=\"color:"+richcolor+"\"> <strong>selenoid rich</strong></p> label</button>";
+    var negbutton = "<button id=\"negreqbutton\" onclick=\"consultDelay('neg')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p> <p style=\"color:"+poorcolor+"\"><strong> selenoid poor</strong></p> label</button>";
     scroll(0,0);
     var atrial="<table class=\"centered\""; //style=\"border:1px solid black\">";
     atrial+="<tr><td colspan=\"3\">";
@@ -574,18 +626,28 @@ function submit(){
 	alert("Your answer has the wrong number of plankton in each group, so it can't possibly be correct.Please move some plankton from the overfull side to the underfull side and reconsider your answer before continuing.");
 	return;
     }
-    for(var i=0; i<richgroup.length;i++){
-	if(knownids.indexOf(richgroup[i].idno)>=0&&richids.indexOf(richgroup[i].idno)<0){
-	    alert("Your answer has some known examples in the wrong group, so it can't possibly be correct. Please move all known examples to the correct side and reconsider your answer before continuing.");
+
+    if(whichtrial==0){//correctness and button use only enforced on practice trial...
+	if(richrequests==0){
+	    alert("You haven't tried requesting a selenoid-rich plankton yet. Please request at least one selenoid-rich label, so you'll know what they look like in the real trials.");
 	    return;
 	}
-    }
-    for(var i=0; i<poorgroup.length;i++){
-	if(knownids.indexOf(poorgroup[i].idno)>1&&richids.indexOf(poorgroup[i].idno)>=0){
-	    alert("Your answer has some known examples in the wrong group, so it can't possibly be correct. Please move all known examples to the correct side and reconsider your answer before continuing.");
+	if(poorrequests==0){
+	    alert("You haven't tried requesting a selenoid-poor plankton yet. Please request at least one selenoid-poor label, so you'll know what they look like in the real trials.")
 	    return;
 	}
-    }
+	for(var i=0;i<knownids.length;i++){
+	    if(richids.indexOf(knownids[i])>=0&&lookupGroup(knownids[i])=="poor"){
+alert("Your answer has some labelled plankton in the wrong group, so it can't possibly be correct. Please swap all labelled plankton into the right group before continuing");
+		return;
+	    }
+	    if(richids.indexOf(knownids[i])<0&&lookupGroup(knownids[i])=="rich"){
+alert("Your answer has some labelled plankton in the wrong group, so it can't possibly be correct. Please swap all labelled plankton into the right group before continuing");
+		return;
+	    }
+	}//end for each known id
+    }//end if whichtrial==0
+
     feedback()
 }
 function feedback(){
@@ -593,8 +655,16 @@ function feedback(){
     correctcount=0;
     for(var i=0;i<richgroup.length;i++)if(richids.indexOf(richgroup[i].idno)>=0)correctcount++;
     for(var i=0;i<poorgroup.length;i++)if(richids.indexOf(poorgroup[i].idno)<0)correctcount++;
-    var fdbk="<h2>You got <span style=\"color:"+correctcolor+"\">$"+(correctcount*10)+" </span> from correctly sorted plankton, <br/> and spent <span style=\"color:"+wrongcolor+"\">$"+knownids.length*20+"</span> on labelling.</h2>"
-    fdbk+="<h3> Total: $"+((correctcount*10)-(knownids.length*20))+"</h3><br/><button onclick=\"tweenscreen()\">Continue!</button>";
+    var fdbk="<h2>You got <span style=\"color:"+correctcolor+"\">$"+(correctcount*10)+" </span> from correctly sorted plankton, <br/> and lost <span style=\"color:"+wrongcolor+"\">$"+(640-correctcount*10)+"</span> on incorrectly labelled plankton.</h2>";
+
+    fdbk+="<h3> Total: $"+((correctcount*10)-(640-correctcount*10))+"</h3><br/>";
+    //new! judgemental feedback re score...
+    if(correctcount<=40)fdbk+="This is not a great result, you can do better...";
+    if(correctcount>40&&correctcount<64)fdbk+="Good job! But it is possible to do better...";
+    if(correctcount==64&&(richrequests+poorrequests)>10)fdbk+="Perfect accuracy! But the expert did a lot of the work... Can you get the same accuracy using fewer expert labels?";
+    if(correctcount==64&&(richrequests+poorrequests)<10&&(richrequests+poorrequests)>1)fdbk+="Fantastic work! You are a plankton-sorting master.";
+
+    fdbk+="<br/><button onclick=\"tweenscreen()\">Continue!</button>";
     savetrial();
     document.getElementById("trialwordsdiv").innerHTML=fdbk;
     document.getElementById("goonbutton").innerHTML="<button onclick=\"tweenscreen()\">Continue!</button>";
@@ -639,11 +709,13 @@ var instructionchapters= ["<p>This task asks you to help a fictitious company Xa
 var instructioncounter=0;
 
 function instructions(){
+    if(instructioncounter==0)saveViewStatus("Instructions_Opened");
     document.getElementById("viewdiv").innerHTML=instructionchapters[instructioncounter];
     instructioncounter++;
 }
 
 function demographics(){
+    saveViewStatus("Demographics_Started");
     document.getElementById("viewdiv").innerHTML= "<table><tr><td>Please fill out these demographic details. This is just for our records, and it is all kept separate from the study data. As long as you finish the experiment you will get paid no matter what you put here, so please be honest.<br/></td></tr>"+
 	"<tr><td>&nbsp</td></tr>"+
 	"<tr><td>"+
@@ -915,6 +987,7 @@ function countrypicker(){
 }
 
 function instructionquiz(){
+    saveViewStatus("Quiz_Started")
     scroll(0,0);
     //var plausible = [25,50,75,90];
 
@@ -1015,28 +1088,23 @@ function tweenscreen(){
     document.getElementById("viewdiv").innerHTML=tweenmessage;
 }
 
+function devMenu(){
+    var menu = "<button onclick=\"instructions()\">Instructions</button><br/>";
+    menu+="<button onclick=\"showtrial()\">Task</button>"
+    document.getElementById("viewdiv").innerHTML=menu;
+}
+
 function runExp(){
     //RUN ON LOAD: ie main method
     document.write("<div id=\"infodiv\"></div><br/><div id=\"viewdiv\"></div>");//divs must exist before fncalls
 
-    instructions();//actual start point
+//    instructions();//actual start point
 
-    //optional instrucion-skipping cheat: 38 is up arrow
-    // var zoomflag=false;
-    // document.onkeypress=function(e){
-    // 	e = e||window.event;
-    // 	//	console.log(e.keyCode);
-    // 	if(zoomflag==false){
-    // 	    if(e.keyCode==38)showtrial();
-    // 	    //	    if(e.keyCode==40)instructionquiz();
-    // 	    zoomflag=true;//not sure how showtrial() behaves if you call it instead of refresh page... 
-    // 	}//just go to task
-    // };
 
     //diag start points:
-    //showtrial();//just go to task
-    //demographics();
-    //tweenscreen();
+    devMenu();
+//   showtrial();//just go to task
+//demographics();
 }
 
 // save experiment data with ajax //from gaebase

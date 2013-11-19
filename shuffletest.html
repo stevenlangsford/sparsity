@@ -1,0 +1,27 @@
+<html>
+<head></head>
+<body>
+<script>
+
+var a=0;
+var b=0;
+var c=0;
+var d=0;
+var placeholders = [function(){a++;},function(){b++},function(){c++},function(){d++;}];
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+var hmtests = 100000;
+for(var i=0;i<hmtests;i++){
+placeholders=shuffle(placeholders);
+placeholders[0]();
+}
+
+document.write((a/hmtests)+":"+(b/hmtests)+":"+(c/hmtests));
+
+</script>
+</body>
+</html>
