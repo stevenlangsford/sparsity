@@ -87,6 +87,12 @@ var whatlabelled = [];
 var richrequests = 0;
 var poorrequests = 0;
 
+var gotposswap=false;
+var gotnegswap=false;
+
+//drawing trick to stabilize request-jump bug...
+var wordsheight;
+
 function lookupID(id){
     for(var i=0;i<poorgroup.length;i++)if(poorgroup[i].idno==id)return poorgroup[i];
     for(var i=0;i<richgroup.length;i++)if(richgroup[i].idno==id)return richgroup[i];
@@ -411,6 +417,7 @@ var currentrule;//=rules75[0];
 
 function swapout(cellcount,origin){
     if(origin=="pos"){
+	gotposswap=true;
 	allactions.push("p");
 	if(cellcount>=richgroup.length)return;
 	var temp = richgroup[cellcount];
@@ -419,6 +426,7 @@ function swapout(cellcount,origin){
 	whatswapped.push(temp.toString());
     }
     if(origin=="neg"){
+	gotnegswap=true;
 	allactions.push("n");
 	if(cellcount>=poorgroup.length)return;
 	var temp=poorgroup[cellcount];
@@ -499,19 +507,17 @@ function consultDelay(reqtype){
     document.getElementById("posreqbutton").disabled=true;
     document.getElementById("negreqbutton").disabled=true;
     document.getElementById("submitans").disabled=true;
-    console.log("disables complete");//diag
     //put up 'thinking' visuals
     trialvisholder=document.getElementById("trialwordsdiv").innerHTML;
     document.getElementById("trialwordsdiv").innerHTML=consultVisuals;
-    
+    document.getElementById("trialwordsdiv").setAttribute("style","height:"+wordsheight+"px");//new...check?
 //call return to trial (with new info) after delay
-    window.setTimeout(function(){seeExample(reqtype)},1000);
+    window.setTimeout(function(){seeExample(reqtype)},2000);
 }
 
 function seeExample(type){
 //erase thinking visuals
     document.getElementById("trialwordsdiv").innerHTML=trialvisholder;    
-    console.log("seeExample called");//diag
     document.getElementById("posreqbutton").disabled=false;
     document.getElementById("negreqbutton").disabled=false;
     document.getElementById("submitans").disabled=false;
@@ -583,8 +589,8 @@ function showtrial(){
     //    rebalance();
 
     var buttcol="#999999";
-    var posbutton = "<button id=\"posreqbutton\" onclick=\"consultDelay('pos')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p><p style=\"color:"+richcolor+"\"> <strong>selenoid rich</strong></p> label</button>";
-    var negbutton = "<button id=\"negreqbutton\" onclick=\"consultDelay('neg')\" style=\"background-color:"+buttcol+"\"><p>Buy a</p> <p style=\"color:"+poorcolor+"\"><strong> selenoid poor</strong></p> label</button>";
+    var posbutton = "<button id=\"posreqbutton\" onclick=\"consultDelay('pos')\" style=\"background-color:"+buttcol+"\"><p>Get a</p><p style=\"color:"+richcolor+"\"> <strong>selenoid rich</strong></p> label</button>";
+    var negbutton = "<button id=\"negreqbutton\" onclick=\"consultDelay('neg')\" style=\"background-color:"+buttcol+"\"><p>Get a</p> <p style=\"color:"+poorcolor+"\"><strong> selenoid poor</strong></p> label</button>";
     scroll(0,0);
     var atrial="<table class=\"centered\""; //style=\"border:1px solid black\">";
     atrial+="<tr><td colspan=\"3\">";
@@ -617,6 +623,8 @@ function showtrial(){
     atrial+="</table>";
     document.getElementById("viewdiv").innerHTML=atrial;
     redraw();
+    wordsheight=document.getElementById("trialwordsdiv").clientHeight;
+
 }
 
 function submit(){
@@ -627,7 +635,7 @@ function submit(){
 	return;
     }
 
-    if(whichtrial==0){//correctness and button use only enforced on practice trial...
+    if(whichtrial==0){//correctness, must-swap, and button use only enforced on practice trial...
 	if(richrequests==0){
 	    alert("You haven't tried requesting a selenoid-rich plankton yet. Please request at least one selenoid-rich label, so you'll know what these labels look like in the real trials.");
 	    return;
@@ -646,6 +654,15 @@ alert("Your answer has some labelled plankton in the wrong group, so it can't po
 		return;
 	    }
 	}//end for each known id
+
+	if(gotposswap==false){
+	    alert("You haven't swapped any plankton from the positive side to the negative side. You'll need to do that to create a good sort in the real runs, so please try this action now in the practice run. Plankton are swapped between groups by clicking on them");
+	    return;
+	}
+	if(gotnegswap==false){
+   alert("You haven't swapped any plankton from the negative side to the positive side. You'll need to do that to create a good sort in the real runs, so please try this action now in the practice run. Plankton are swapped between groups by clicking on them");
+	    return;
+	}
     }//end if whichtrial==0
 
     feedback()
@@ -658,15 +675,19 @@ function feedback(){
     var fdbk="<h2>You got <span style=\"color:"+correctcolor+"\">$"+(correctcount*10)+" </span> from correctly sorted plankton, <br/> and lost <span style=\"color:"+wrongcolor+"\">$"+(640-correctcount*10)+"</span> on incorrectly labelled plankton.</h2>";
 
     fdbk+="<h3> Total: $"+((correctcount*10)-(640-correctcount*10))+"</h3><br/>";
-    if(richrequests+poorrequests>0)fdbk+="<h6> You needed "+(richrequests+poorrequests)+" requests, so your profit-per-request was "+((correctcount*10))/(richrequests+poorrequests)+"</h6><br/>";
+    if(richrequests+poorrequests>0)fdbk+="<h4> You needed "+(richrequests+poorrequests)+" requests, so your profit-per-request was $"+Math.round((correctcount*10-(640-correctcount*10))/(richrequests+poorrequests))+"</h4><br/>";
     else fdbk+="You made no requests, so it appears you are not actually trying to sort the plankton...";
     //new! judgemental feedback re score...
+    fdbk+="<p>";
+    var smallreqs = 6;
     if(correctcount<=40)fdbk+="This is not a great result, you can do better...";
-    if(correctcount>40&&correctcount<64)fdbk+="Good job! But it is possible to do better...";
-    if(correctcount==64&&(richrequests+poorrequests)>10)fdbk+="Perfect accuracy! But the expert did a lot of the work... Can you get the same accuracy using fewer expert labels?";
-    if(correctcount==64&&(richrequests+poorrequests)<10&&(richrequests+poorrequests)>1)fdbk+="Fantastic work! You are a plankton-sorting master.";
+    if(correctcount>40&&correctcount<60)fdbk+="Good job! But it is possible to do better...";
+    if(correctcount>=62&&correctcount!=64&&(richrequests+poorrequests)>smallreqs)fdbk+="Great accuracy! But the expert did a lot of the work... Can you get this kind of accuracy using fewer expert labels?";
+    if(correctcount>=62&&correctcount!=64&&(richrequests+poorrequests)<=smallreqs)fdbk+="This is a great result!";
+    if(correctcount==64&&(richrequests+poorrequests)>smallreqs)fdbk+="Perfect accuracy! But the expert did a lot of the work... Can you get the same accuracy using fewer expert labels?";
+    if(correctcount>=62&&(richrequests+poorrequests)<smallreqs&&(richrequests+poorrequests)>1)fdbk+="Fantastic work! You are a plankton-sorting master.";
 
-    fdbk+="<br/><button onclick=\"tweenscreen()\">Continue!</button>";
+    fdbk+="</p><br/><button onclick=\"tweenscreen()\">Continue!</button>";
     savetrial();
     document.getElementById("trialwordsdiv").innerHTML=fdbk;
     document.getElementById("goonbutton").innerHTML="<button onclick=\"tweenscreen()\">Continue!</button>";
@@ -1009,10 +1030,10 @@ function instructionquiz(){
 	"</p>"+
 
     "<p><strong>What information is available to help you work out which plankton are selenoid-rich?</strong></br>"+
-	"<input type=\"radio\" name=\"howsample\" id=\"timelimit\" value=\"time\"/>&nbsp You can buy new examples of either type of plankton.<br/>"+
-	"<input type=\"radio\" name=\"howsample\" id=\"limfifty\" value=\"fifty\"/>&nbsp You can buy a list of facts about plankton.<br/>"+
-	"<input type=\"radio\" name=\"howsample\" id=\"suibian\" value=\"suibian\"/>&nbsp You can pay an expert to remove one selenoid-poor plankton from the collection. <br/>"+
-	"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp You can pay an expert to give the correct label for one example of either type of plankton.<br/></p>"+
+	"<input type=\"radio\" name=\"howsample\" id=\"timelimit\" value=\"time\"/>&nbsp You can ask for new examples of either type of plankton.<br/>"+
+	"<input type=\"radio\" name=\"howsample\" id=\"limfifty\" value=\"fifty\"/>&nbsp You can ask for a list of facts about plankton.<br/>"+
+	"<input type=\"radio\" name=\"howsample\" id=\"suibian\" value=\"suibian\"/>&nbsp You can ask an expert to remove one selenoid-poor plankton from the collection. <br/>"+
+	"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp You can ask an expert to give the correct label for one example of either type of plankton.<br/></p>"+
 
     "<p><strong>How is your final score calculated from your sort of the plankton?</strong></br>"+
 	"<input type=\"radio\" name=\"howtest\" id=\"profit5\" value=\"pick\"/>&nbsp $5 for every correctly sorted plankton and -$5 for every one incorrectly sorted.<br/>"+
@@ -1022,7 +1043,7 @@ function instructionquiz(){
 
     "<p><strong>Aside from the different pattern determining which plankton are selenoid-rich, what is the main difference between the practice run and the two real runs?</strong></br>"+
 	"<input type=\"radio\" name=\"practice\" id=\"nopractice\" value=\"nopractice\"/>&nbsp The practice runs and real runs are the same, but your score is only recorded for the real runs.<br/>"+
-	"<input type=\"radio\" name=\"practice\" id=\"prrdiff\" value=\"prrdiff\"/>&nbsp In the practice run you must try both of the request buttons to be able to continue<br/>"+
+	"<input type=\"radio\" name=\"practice\" id=\"prrdiff\" value=\"prrdiff\"/>&nbsp In the practice run you must try all the available actions before you are able to continue<br/>"+
 	"<input type=\"radio\" name=\"practice\" id=\"prrsame\" value=\"prrsame\"/>&nbsp The practice run has no time limit, the real runs must be completed before the timer runs out.<br/>"+
 	"<input type=\"radio\" name=\"practice\" id=\"pprdiff\" value=\"pprdiff\"/>&nbsp In the practice run you can use the expert to check your sort, in the real runs the expert is unavailable. <br/>"+
 	"<button onclick=\"quizvalidate()\">Begin!</button>";
