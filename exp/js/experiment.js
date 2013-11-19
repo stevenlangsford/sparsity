@@ -629,11 +629,11 @@ function submit(){
 
     if(whichtrial==0){//correctness and button use only enforced on practice trial...
 	if(richrequests==0){
-	    alert("You haven't tried requesting a selenoid-rich plankton yet. Please request at least one selenoid-rich label, so you'll know what they look like in the real trials.");
+	    alert("You haven't tried requesting a selenoid-rich plankton yet. Please request at least one selenoid-rich label, so you'll know what these labels look like in the real trials.");
 	    return;
 	}
 	if(poorrequests==0){
-	    alert("You haven't tried requesting a selenoid-poor plankton yet. Please request at least one selenoid-poor label, so you'll know what they look like in the real trials.")
+	    alert("You haven't tried requesting a selenoid-poor plankton yet. Please request at least one selenoid-poor label, so you'll know what these labels look like in the real trials.")
 	    return;
 	}
 	for(var i=0;i<knownids.length;i++){
@@ -658,6 +658,8 @@ function feedback(){
     var fdbk="<h2>You got <span style=\"color:"+correctcolor+"\">$"+(correctcount*10)+" </span> from correctly sorted plankton, <br/> and lost <span style=\"color:"+wrongcolor+"\">$"+(640-correctcount*10)+"</span> on incorrectly labelled plankton.</h2>";
 
     fdbk+="<h3> Total: $"+((correctcount*10)-(640-correctcount*10))+"</h3><br/>";
+    if(richrequests+poorrequests>0)fdbk+="<h6> You needed "+(richrequests+poorrequests)+" requests, so your profit-per-request was "+((correctcount*10))/(richrequests+poorrequests)+"</h6><br/>";
+    else fdbk+="You made no requests, so it appears you are not actually trying to sort the plankton...";
     //new! judgemental feedback re score...
     if(correctcount<=40)fdbk+="This is not a great result, you can do better...";
     if(correctcount>40&&correctcount<64)fdbk+="Good job! But it is possible to do better...";
@@ -700,8 +702,8 @@ function finish(){
 var instructionbutton = "<button id=\"instbutton\" onclick=\"instructions()\">Continue</button>";
 var instructionchapters= ["<p>This task asks you to help a fictitious company Xabanta with their selenoid collecting operations. The whole task will take about 15 minutes. That includes a short quiz about these instructions, and three runs through a sorting task where your goal is to figure out how to tell the difference between two different kinds of plankton.</p>"+instructionbutton,
 			  "<p>In this study, some plankton are selenoid-rich and some are selenoid-poor. Xabanta has discovered a medical use for selenoid in making artificial corneas, so it's interested in collecting <strong>selenoid-rich</strong> plankton.</p>Individual plankton can take on a variety of different appearances. They vary in color, number of petal-like arms, and body size. Previous work has shown that about "+percentrich+"% of plankton are selenoid-rich.</p>"+instructionbutton,
-			  "<p>In the main task, you'll be shown two buckets of plankton, one labelled 'Selenoid rich' and the other labelled 'Selenoid poor'. The plankton start off <strong>randomly split</strong> between the two buckets, and your job is to swap them around so that all the selenoid-rich plankton are in the 'Selenoid rich' bucket and all the selenoid-poor plankton are in the 'Selenoid poor' bucket.</p><p><strong>Every correctly sorted plankton earns Xabanta $10.</strong></p><p>To start off with you have no clues about which plankton belong in which group. You can get this information by having an expert label one of the plankton for you, using one of the request buttons at the bottom of the screen. You choose what kind of plankton you would like them to identify, a selenoid-rich one or a selenoid-poor one.<p><strong> Each test done by the expert costs Xabanta $20</strong>.</p> The best way to maximize Xabanta's profits is to figure out the pattern yourself from a small number of labelled examples. That way you can profit from the correctly labelled plankton without spending too much on the expert. You can swap plankton between the two buckets at any time by clicking on them. When you're confident you have the plankton all sorted into the right buckets, click the 'Submit answer' button at the bottom of the screen.</p>"+instructionbutton,
-			  "<p>There are a couple things you need to be careful of when submitting an answer.</p><p>Your answer must be realistic. Your answer must have the right number of plankton in each group, because you already know that "+percentrich+"% of plankton are selenoid rich. Also, labelled examples must be swapped into the right group.</p><p> As always, the most important thing to remember is the bottom line! Your success in this task is measured by the profits you can generate for Xabanta, which depends on two things: the profit from the correctly sorted plankton, and the cost of the labelling requests.</p> <p>You'll get three tries at the task. The first is a practice run, followed by two real runs. The pattern of selenoid-rich plankton is different each time, so you'll have to figure each one out independently. Good luck!</p>"+instructionbutton,
+			  "<p>In the main task, you'll be shown two buckets of plankton, one labelled 'Selenoid rich' and the other labelled 'Selenoid poor'. The plankton start off <strong>randomly split</strong> between the two buckets, and your job is to swap them around so that all the selenoid-rich plankton are in the 'Selenoid rich' bucket and all the selenoid-poor plankton are in the 'Selenoid poor' bucket.</p><p>You will be scored on the quality of your sort.<strong> Every correctly sorted plankton will increase your score by $10, and every incorrectly sorted plankton will decrease your score by $10.</strong></p><p>To start off with you have no clues about which plankton belong in which group. You can get this information by having an expert label one of the plankton for you, using one of the request buttons at the bottom of the screen. You choose what kind of plankton you would like them to identify, a selenoid-rich one or a selenoid-poor one. It's best not to rely on the expert too much. The aim is for you to become an expert yourself! You can swap plankton between the two buckets at any time by clicking on them. When you're confident you have the plankton all sorted into the right buckets, click the 'Submit answer' button at the bottom of the screen.</p><p>Please note your answer must have the right number of plankton in each group before you can submit it, because you already know that "+percentrich+"% of plankton are selenoid rich.</p>"+instructionbutton,
+			  " <p>You'll get three tries at the task. The first is a practice run, followed by two real runs. In the practice run, please try out both of the request buttons, requesting a label for at least one selenoid-rich and one selenoid-poor plankton. This is so you will know what the labels look like in the real runs. You will not be able to continue on from the practice run to the real runs until you have made both types of request and put together a reasonable sorted solution.  The pattern of selenoid-rich plankton is different in each run, so you'll have to figure each one out independently. Good luck!</p>"+instructionbutton,
 
 			  "<p>On the next page, you'll be asked some questions about these instructions. There are also a couple of demographics questions for our records. Then there will be a practice run and two real runs through the main task. All together, the whole process is expected to take around 15 minutes.</p>This is part of a study being run by the University of Adelaide. By clicking start, you are agreeing to take part in it. You should know that you're free to withdraw at any time (although you'll only be paid on completion), and that although data gained from this study may be published, you will not be identified and your personal details will not be divulged, nor will anything be linked to your Amazon ID.</p><br/><button onclick=\"instructionquiz()\">Start!</button><br/><p style=\"font-size:.8em\">Please direct any questions about this study to the principle investigator, Steven Langsford (steven.langsford@adelaide.edu.au). For any questions regarding the ethics of the study, please contact the convenor of the Subcommittee for Human Research in the School of Psychology at the University of Adelaide, Dr Paul Delfabbro (+61)08 8313 4936.</p>"
 			 ];
@@ -1012,23 +1014,17 @@ function instructionquiz(){
 	"<input type=\"radio\" name=\"howsample\" id=\"suibian\" value=\"suibian\"/>&nbsp You can pay an expert to remove one selenoid-poor plankton from the collection. <br/>"+
 	"<input type=\"radio\" name=\"howsample\" id=\"score\" value=\"score\"/>&nbsp You can pay an expert to give the correct label for one example of either type of plankton.<br/></p>"+
 
-    "<p><strong>What is the profit to Xabanta for each correctly sorted plankton?</strong></br>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"profit5\" value=\"pick\"/>&nbsp $5<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"profit10\" value=\"label\"/>&nbsp $10<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"profit15\" value=\"write\"/>&nbsp $15<br/>"+
-	"<input type=\"radio\" name=\"howtest\" id=\"profit20\" value=\"points\"/>&nbsp $20<br/></p>"+
+    "<p><strong>How is your final score calculated from your sort of the plankton?</strong></br>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit5\" value=\"pick\"/>&nbsp $5 for every correctly sorted plankton and -$5 for every one incorrectly sorted.<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit10\" value=\"label\"/>&nbsp $10 for every correctly sorted plankton and -$10 for every one incorrectly sorted.<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit15\" value=\"write\"/>&nbsp $15 for every correctly sorted plankton and -$15 for every one incorrectly sorted.<br/>"+
+	"<input type=\"radio\" name=\"howtest\" id=\"profit20\" value=\"points\"/>&nbsp $20 for every correctly sorted plankton and -$20 for every one incorrectly sorted.<br/></p>"+
 
-    "<p><strong>How much does the expert charge to label a single plankton?</strong></br>"+
-	"<input type=\"radio\" name=\"howcharge\" id=\"cost5\" value=\"five\"/>&nbsp $5<br/>"+
-	"<input type=\"radio\" name=\"howcharge\" id=\"cost10\" value=\"ten\"/>&nbsp $10<br/>"+
-	"<input type=\"radio\" name=\"howcharge\" id=\"cost15\" value=\"fifteen\"/>&nbsp $15<br/>"+
-	"<input type=\"radio\" name=\"howcharge\" id=\"cost20\" value=\"twenty\"/>&nbsp $20<br/></p>"+
-
-    "<p><strong>How much practice do you get?</strong></br>"+
-	"<input type=\"radio\" name=\"practice\" id=\"nopractice\" value=\"nopractice\"/>&nbsp No practice<br/>"+
-	"<input type=\"radio\" name=\"practice\" id=\"prrdiff\" value=\"prrdiff\"/>&nbsp One practice run, then two real test runs, each on different plankton with different selenoid patterns<br/>"+
-	"<input type=\"radio\" name=\"practice\" id=\"prrsame\" value=\"prrsame\"/>&nbsp One practice run, then two real test runs, all on the same plankton with the same selenoid pattern<br/>"+
-	"<input type=\"radio\" name=\"practice\" id=\"pprdiff\" value=\"pprdiff\"/>&nbsp Two practice runs, then one real test run, each on different plankton with different selenoid patterns<br/>"+
+    "<p><strong>Aside from the different pattern determining which plankton are selenoid-rich, what is the main difference between the practice run and the two real runs?</strong></br>"+
+	"<input type=\"radio\" name=\"practice\" id=\"nopractice\" value=\"nopractice\"/>&nbsp The practice runs and real runs are the same, but your score is only recorded for the real runs.<br/>"+
+	"<input type=\"radio\" name=\"practice\" id=\"prrdiff\" value=\"prrdiff\"/>&nbsp In the practice run you must try both of the request buttons to be able to continue<br/>"+
+	"<input type=\"radio\" name=\"practice\" id=\"prrsame\" value=\"prrsame\"/>&nbsp The practice run has no time limit, the real runs must be completed before the timer runs out.<br/>"+
+	"<input type=\"radio\" name=\"practice\" id=\"pprdiff\" value=\"pprdiff\"/>&nbsp In the practice run you can use the expert to check your sort, in the real runs the expert is unavailable. <br/>"+
 	"<button onclick=\"quizvalidate()\">Begin!</button>";
 }
 
@@ -1039,7 +1035,7 @@ function quizvalidate(){
 	if(percentrich==50) return "fiftypc";
 	if(percentrich==75) return "seventyfivepc";
     }
-    var valid=document.getElementById("rich").checked && document.getElementById(whichrichnessradio()).checked && document.getElementById("score").checked && document.getElementById("profit10").checked &&document.getElementById("cost20").checked && document.getElementById("prrdiff").checked;
+    var valid=document.getElementById("rich").checked && document.getElementById(whichrichnessradio()).checked && document.getElementById("score").checked && document.getElementById("profit10").checked && document.getElementById("prrdiff").checked;
     if(valid){
 	demographics();
 
@@ -1098,11 +1094,11 @@ function runExp(){
     //RUN ON LOAD: ie main method
     document.write("<div id=\"infodiv\"></div><br/><div id=\"viewdiv\"></div>");//divs must exist before fncalls
 
-//    instructions();//actual start point
+    instructions();//actual start point
 
 
     //diag start points:
-    devMenu();
+    devMenu(); //buttons lead to instructions or task
 //   showtrial();//just go to task
 //demographics();
 }
