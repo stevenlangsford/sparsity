@@ -1,0 +1,31 @@
+@article{navarro2011sparsecat,
+  title={Hypothesis generation, sparse categories, and the positive test strategy.},
+  author={Navarro, Daniel J and Perfors, Amy F},
+  journal={Psychological review},
+  volume={118},
+  number={1},
+  pages={120},
+  year={2011},
+  publisher={American Psychological Association}
+}
+@article{nelson2005usefulquestions,
+  title={Finding useful questions: on Bayesian diagnosticity, probability, impact, and information gain.},
+  author={Nelson, Jonathan D},
+  journal={Psychological review},
+  volume={112},
+  number={4},
+  pages={979},
+  year={2005},
+  publisher={American Psychological Association}
+}
+
+@article{austerweil2011deterministic,
+  title={Seeking confirmation is rational for deterministic hypotheses},
+  author={Austerweil, Joseph L and Griffiths, Thomas L},
+  journal={Cognitive Science},
+  volume={35},
+  number={3},
+  pages={499--526},
+  year={2011},
+  publisher={Wiley Online Library}
+}

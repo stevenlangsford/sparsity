@@ -41,7 +41,7 @@ this.y=y;
 this.petals=petallevel;
 this.ring=ringlevel;
 this.collevel = collevel;
-this.colstring = "#"+collevel.toString(16)+"00"+collevel.toString(16);//maybe order changeable, for diff-colour trials
+this.colstring = "#"+"00"+collevel.toString(16)+"00";//maybe order changeable, for diff-colour trials
 this.size = sizeparam;
 }
 
