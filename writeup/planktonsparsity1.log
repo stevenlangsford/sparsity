@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  6 DEC 2013 10:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  10 DEC 2013 22:12
 entering extended mode
  %&-line parsing enabled.
 **planktonsparsity1.tex
@@ -190,31 +190,31 @@ Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 (./planktonsparsity1.aux)
 \openout1 = `planktonsparsity1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 37.
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 37
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 35.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 35
 .
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 37.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 37.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 35.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 35.
 
 (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -232,115 +232,101 @@ LaTeX Font Info:    ... okay on input line 37.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 39
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 37
 .
  (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 39
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 37
 .
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 39
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 37
 .
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 41--45
 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 45.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
-
-Underfull \hbox (badness 1484) in paragraph at lines 59--63
-[]\OT1/ptm/m/n/10 A num-ber of pos-si-ble sam-pling strate-gies have been
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
-
- []
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
-<minstim.png, id=8, 226.8475pt x 56.21pt>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+
+<minstim.png, id=7, 226.8475pt x 56.21pt>
 File: minstim.png Graphic file (type png)
- <use minstim.png>
-<propposbypcrichdots.png, id=10, 505.89pt x 505.89pt>
+ <use minstim.png> [2 <./minstim.png>] <propposbypcrichdots.png, id=14, 505.89p
+t x 505.89pt>
 File: propposbypcrichdots.png Graphic file (type png)
 
 <use propposbypcrichdots.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 113--114
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 115--116
 [][] 
  []
 
-<sidebysidebar3.png, id=11, 505.89pt x 505.89pt>
+<sidebysidebar3.png, id=15, 505.89pt x 505.89pt>
 File: sidebysidebar3.png Graphic file (type png)
  <use sidebysidebar3.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 121--122
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 123--124
 [][] 
  []
 
-[2 <./minstim.png> <./propposbypcrichdots.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
+[3 <./propposbypcrichdots.png (PNG copy)> <./sidebysidebar3.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 139--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--139
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
-
- []
-
-(./planktonsparsity1.bbl) [3 <./sidebysidebar3.png (PNG copy)>]
-(./planktonsparsity1.aux) ) 
+(./planktonsparsity1.bbl) [4] (./planktonsparsity1.aux) ) 
 Here is how much of TeX's memory you used:
- 4177 strings out of 495061
- 55997 string characters out of 1182621
- 121201 words of memory out of 3000000
- 7313 multiletter control sequences out of 15000+50000
+ 4201 strings out of 495061
+ 56685 string characters out of 1182621
+ 122201 words of memory out of 3000000
+ 7337 multiletter control sequences out of 15000+50000
  30649 words of font info for 61 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 36i,8n,38p,1245b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.en
-c}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
-live/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/
-urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb
-></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on planktonsparsity1.pdf (3 pages, 108585 bytes).
+ 36i,8n,38p,1803b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texl
+ive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
+are/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fo
+nts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on planktonsparsity1.pdf (4 pages, 115941 bytes).
 PDF statistics:
- 43 PDF objects out of 1000 (max. 8388607)
+ 46 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

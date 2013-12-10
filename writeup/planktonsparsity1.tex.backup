@@ -5,20 +5,18 @@
 %% producing a letter-format document.
 
 \documentclass[10pt,letterpaper]{article}
-
 \usepackage{cogsci}
 \usepackage{pslatex}
 \usepackage{apacite}
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts}
 \usepackage{tipa}
-
 \usepackage{caption}[2005/10/24]
 \newcommand{\smallspace}{\def\baselinestretch{1.1}}
 \DeclareCaptionFont{smallspace}{\smallspace}
 \captionsetup{
-   margin   = {0pt},
-   font        =  {footnotesize,smallspace},
+   margin    = {0pt},
+   font      = {footnotesize,smallspace},
    aboveskip = {3pt},
    belowskip = {-10pt},
    labelfont = {up},
@@ -54,28 +52,29 @@ hypothesis testing; positive test bias; sparsity; information sensitivity;
 %We begin by presenting an experiment in which 
 %We find that 
 %We conclude with a discussion of implications for
-Hypothesis testing strategies are relevant to a wide range of naturalistic learning tasks where the learner has some control over what information will be received. Where learners are able to explore an environment, produce candidate examples of a target concept for validation, or request labels for some subset of the total data available to them, the question arises of how to do this efficiently\cite{settles09activelearnlitrev}. Where should exploration be directed? Which candidate examples should be produced? Which data should be labelled?
+Hypothesis testing strategies are relevant to a wide range of naturalistic learning tasks where the learner has some control over what information will be received. Where learners are able to explore an environment, produce candidate examples of a target concept for validation, or request labels for some subset of the total data available to them, the question arises of how to do this efficiently\cite{settles09activelearnlitrev,gureckis2012selfdirectedlearning}. Where should exploration be directed? Which candidate examples should be produced? Which data should be labelled?
 
-A number of possible sampling strategies have been discussed \cite{nelson2005usefulquestions}.\\ 
--falsification \cite{popper1959scidiscovery}, conspicuous by its absence \cite{wason1960failure}\\ 
--positive test \cite{klayman1987confirmation}\\
--probability gain (min entropy etc info-sensitivity... usefully distinct?)\cite{nelson2010probgain}\\
+A number of possible sampling strategies have been discussed \cite{nelson2005usefulquestions}. One such strategy drawn from the philosophy of science is falsification, whereby learners should choose tests that aim to falsify their current hypothesis, on the grounds that confirming evidence is always open to alternative explanations, but counterexamples always definitively rule out a hypothesis \cite{popper1959scidiscovery}. Although widely accepted as a scientific norm, strict falsification is rarely followed by people faced with hypothesis-testing tasks \cite{wason1960failure,wason1968secondlook}. This failure to falsify, or `confirmation bias' has been replicated in a wide range of tasks and contexts \cite{nickerson1998confirmation}. In the process, its status as an irrational bias has been challenged. One important observation, due to Klayman and Ha \cite{klayman1987confirmation}, is that tests that are apparently confirmatory, in that they are drawn from a candidate hypothesis, may yield a falsification in situations where the true hypothesis is not a superset of the candidate one. In choosing whether to probe from within the scope of a candidate hypothesis or outside it, the learner must consider the base rate probability that a member of the domain under consideration is also a member of the target set, the proportion of domain members that are covered by the candidate hypothesis, and (estimated) positive and negative error rates under the candidate hypothesis\cite{klayman1987confirmation}. When the target set is a relatively small subset of the whole domain, and its size is approximately known, positive testing is a defensible strategy in terms of maximizing the chance of falsification of a candidate hypothesis.
+More recent work has extended this approach with a variety of methods for judging the utility of a given test, for example in terms of expected probability gain (minimizing the expected probability of error on a randomly selected domain member after the seeing the results of the test)[CITE], or expected information gain (maximally reducing uncertainty defined in terms of Shannon information)[CITE]. Although differing in their predictions under some circumstances, these measures have in common a shared perspective of tests as gambles with uncertain rewards paid out in evidential value \cite{poletiek2000gambles}. Unlike strict falsification, a strategy of maximizing expected probability gain has been shown to account well for human responses in simplified hypothesis testing tasks\cite{nelson2010probgain}. 
 
-Confirmation bias indistinguishable from positive test indistinguishable from information sensitivity, all same predictions under 'classical' situations...
+Recent work has been ambiguous as to whether these responses are due to sensitivity to the value of a given test under the specific structure of the task\cite{meder2012rewardfnsearch}, or if a positive test strategy is adopted in an indiscriminate way because the conditions under which it is a favourable strategy\cite{klayman1987confirmation,austerweil2011deterministic} are common, making it a reasonable heuristic adopted even when more sophisticated information-sensitive strategies are available\cite{cherubini2010questionasymmetry}.%or inconsistently information sensitive depending on the task demands and the type of information eg feature-present vs feature-absent \cite{rusconi2012baseratenewinfo}
+This study aims to directly test the extent to which people are sensitive to the evidential-reward structure of a particular hypothesis testing task by manipulating one of the key assumptions underlying the expected utility of positive tests: the sparsity of the hypothesis.
 
-Enter sparsity! What is sparsity. Predictions diverge under manipulation of sparsity.\cite{navarro2011sparsecat}
+The sparsity of a hypothesis refers to the proportion of all members of a domain that are indexed by the hypothesis in question: sparse hypotheses index fewer than half of the members of the relevant domain \cite{navarro2011sparsecat}. For example, in the domain `living species' the category `DOGS' is sparse, while `AEROBIC ORGANISM' is a non-sparse, since most living things are not dogs, but do metabolise oxygen. Sparsity can vary in degree: while `dogs' and `poodles' are both sparse categories in the domain of living things, the category `poodles' is more sparse.
 
- This paper examines human behaviour in one particular task ??from family X??, a sorting task asking participants to learn a category boundary in a stimulus space consisting of simple geometric shapes varying on three feature-dimensions. Participants were able to request labels for a randomly selected positive example of a target category or a negative non-target example. Participants were aware of what proportion of all stimuli belonged to the target category, and between-subjects manipulations of this proportion showed both a sensitivity to the information value of each type of request and a preference for requesting positive examples.
+Sparsity is one factor impacting the utility of the positive test strategy \cite{klayman1987confirmation, navarro2011sparsecat}. Where the target hypothesis is very sparse, the information value of negative results is greatly reduced, BECAUSE OF MATHS AND STUFF.
+
+This paper examines human behaviour in one particular task ??from family X??, a sorting task asking participants to learn a category boundary in a stimulus space consisting of simple geometric shapes varying on three feature-dimensions. Participants were able to request labels for a randomly selected positive example of the target category or a negative non-target example. Participants were aware of what proportion of all stimuli belonged to the target category, and between-subjects manipulations of this proportion showed both a sensitivity to the information value of each type of request and a preference for requesting positive examples.
 
 Missing: emphasis on abstract non-spatial nature of hypothesis space, contrast battleships?
-Nice quote for this: `` ... recourse to asymmetric testing... probably depends on context-related motivations and prior knowledge. In abstract tasks, where that knowledge is not available, more simple strategies, such as positive testing, are prevalent''\cite{cherubini2010questionasymmetry}
+Nice quote for this: `` ... recourse to asymmetric testing... probably depends on context-related motivations and prior knowledge. In abstract tasks, where that knowledge is not available, more simple strategies, such as positive testing, are prevalent''
 [Relationship between `asymmetry' and information sensitivity is not simple... also, their specific abstract task is a monster, evidence consistent with "+'ve tests as fallback under bamboozlement"]
 
 \section*{Experiment}
 %{\bf Participants}. 
 367 adults were recruited via Amazon Mechanical Turk.%, an online resource increasingly used and validated for experiments in psychology and linguistics \cite{sprouse11,crumpetal13}.
 Of these, 301 completed the task, and 121 were excluded from further analysis for either failing to make any label requests at all (85 participants), making more than 60 requests (9 participants), or failing to sort labelled examples correctly (36 participants). Nine participants were excluded for a combination of these reasons.%so exclusions sum to 130 not 121
-The remaining 180 participants contributed 360 trials, with between 104 and 131 trials falling in each of three sparsity conditions. These set the proportion of plankton belonging to the `rich' category at 25\%, 50\%, or 75\%.
+The remaining 180 participants contributed 360 trials, with between 104 and 131 trials falling in each of three sparsity conditions. These set the proportion of stimuli belonging to the target category at 25\%, 50\%, or 75\%.
 
 Ages ranged from 19 to 67 (mean: 34.4), 45.0\% were female. 117 of the final participants were from the United States and 52 were from India. Those remaining were from 8 other countries in Africa, North and South America, Europe, and Asia. All participants were paid \$0.60US for the 15 minute experiment.
 
@@ -83,7 +82,7 @@ Ages ranged from 19 to 67 (mean: 34.4), 45.0\% were female. 117 of the final par
 
 The cover story for the study described a fictitious company interested in harvesting a new substance called `selenoid' from plankton. Participants were told selenoid-rich plankton were desirable for harvesting, and were given the percentage of all plankton expected to be selenoid-rich, either 25\%, 50\%, or 75\% depending on the experimental condition. In each trial, participants were presented with two `bins', each containing a random selection of half the possible plankton examples. Buttons below each bin allowed participants to request a label for either a selenoid-rich or a selenoid-poor plankton, which appeared as a persistent coloured highlight around the randomly selected example after a two-second delay. Plankton could be swapped between bins by clicking on them, and participants were asked to click a \textsf{submit} button after they had sorted each plankton into the correct bin. Once a sort was submitted, the true selenoid status for each plankton was revealed and a score displayed calculated as 10 points for each one correctly sorted and -10 for each incorrectly sorted. An inference-efficiency score defined as total score divided by number of requests made was also displayed. 
 
-All participants answered a series of multiple-choice questions to make sure they had read and understood the instructions. The main task was then presented three times, the first of which was labelled as a practice trial and required participants to try all the avaliable actions and submit a plausible sort before continuing. 
+All participants answered a series of multiple-choice questions to make sure they had read and understood the instructions. The main task was then presented three times, the first of which was labelled as a practice trial and required participants to try all the available actions and submit a plausible sort before continuing. 
 
 %\subsection{Conditions}
 %Meaty section in example paper... here just 25 50 75 done, best done in 'test stimuli' section?
@@ -123,26 +122,27 @@ This clustering of request proportions motivates a categorization of responses b
 \label{sidebysidebar3}
 \end{figure}
 
-All strategies were followed by some participants in all conditions, and the `Even' request strategy balancing positive and negative requests was always the most popular, never lower than 44\% of participants. The population percentage of `rich' plankton did impact on the attractiveness of each testing strategy: the proportion of people preferring positive tests fell from 37\% in the 25\% rich condition to 21\% in the 75\% rich condition, while the proportion of people preferring negative tests rose from 19\% to 33\%, indicating a preference for whichever type of test corresponded to the minority classification in the whole population. When the population was evenly split, the `Even' testing strategy was more popular than othewise at 50\% of all participants, and a preference for positive tests was more common that a preference for negative tests, at 27\% and 23\% of participants respectively.
+All strategies were followed by some participants in all conditions, and the `Even' request strategy balancing positive and negative requests was always the most popular, never lower than 44\% of participants. The population percentage of `rich' plankton did impact on the attractiveness of each testing strategy: the proportion of people preferring positive tests fell from 37\% in the 25\% rich condition to 21\% in the 75\% rich condition, while the proportion of people preferring negative tests rose from 19\% to 33\%, indicating a preference for whichever type of test corresponded to the minority classification in the whole population. When the population was evenly split, the `Even' testing strategy was more popular than otherwise at 50\% of all participants, and a preference for positive tests was more common that a preference for negative tests, at 27\% and 23\% of participants respectively.
 
-%What limitations/caveats/assumptions needed?
+
 \section{Discussion}
 %Conclusions
--Results show support for a sparsity effect consistent with battleships, \cite{navarro2011sparsecat}: effect of information sensitivity\\
--Results replicate a positivity/framing effect, it matters which side is `rich' \\
--Clustering at special values 0, .5, 1 in all conditions suggests a kind of heuristic approach. `context sensitive heuristics' (?) Not really a clean 100\% reliance on information value, anyway.\\
+The results show people adjusting their sampling strategies in response to the sparsity of the hypothesis testing task at hand, supporting an information sensitive account of natural hypothesis testing\cite{navarro2011sparsecat}. This sensitivity to the relative size of the target category in the stimulus space obtains even though this is an abstract space defined over the similarity of a set of geometrical shapes. The effect appears more pronounced amoung participants who achieved high scores, but the predicted sparsity-based sampling differences are also apparent among participants with less-than-perfect scores, making it unlikely that the pattern observed is due to deductive problem-solving by a subset of participants. %Is there a better way of saying `gaming the task', ie ``result is (probably) not a totally artificial product of task demands''.  
+
+Although consistent with a degree of sensitivity to the information value of requests, these data show a number of ways in which people's requests deviate from information-utility treatments of the task. Firstly, a positive testing bias is evident, with participants favouring the target `rich' category asymmetrically despite the symmetry of the task under the sparsity manipulation. It's unclear if this is due to a form of matching [CITE!] or an expectation that the conditions that favour positive testing are generally ubiquitous, although in this artificial case they are not.
+The clustering of positive-test proportions at the special values 0, .5, and 1 in all conditions also suggests a kind of heuristic approach, albeit a heuristic that is to some extent context sensitive. These particular clusters may be due to the limited range of request types avaiable to participants.
 
 %Limitations
--Lots of drop-out, high exclusion rate. Suspicious?
--Visual box-sizes for grouping plankton, undermines claim of abstract hypothesis space?
--How critical is being able to see all possible plankton examples? Knowledge of limits of variation critical for sparsity manipulation? (Rarely available in real life...?)
+-Lots of drop-out, high exclusion rate. Suspicious?\\
+-Visual box-sizes for grouping plankton, undermines claim of abstract hypothesis space?\\
+-How critical is being able to see all possible plankton examples? Knowledge of limits of variation critical for sparsity manipulation? (Rarely available in real life...?)\\
 
 %Further questions....
--How fine-grained are these judgements? Could a different design get smoother response variation with more smoothly varying information value, or (more) strategy-clusters in different places? (ie, battleships... so, yes?). Note everything here is discrete: features are discrete, selenoid status is binary, request type also binary, possibly this artificially encourages the clustering seen here? Testable: what if there are three categories, and three label-request buttons?
--Positivity bias attenuated in higher scoring group? (No relevant results reported in this draft). positivity bais possibly a fallback strategy -> indicator of not understanding? Consistent with `naturalistic Wason improves performance' (others...?)
+-How fine-grained are these judgements? Could a different design get smoother response variation with more smoothly varying information value, or (more) strategy-clusters in different places? (ie, battleships... so, yes?). Note everything here is discrete: features are discrete, selenoid status is binary, request type also binary, possibly this artificially encourages the clustering seen here? Testable: what if there are three categories, and three label-request buttons?\\
+-Positivity bias attenuated in higher scoring group? (No relevant results reported in this draft). positivity bais possibly a fallback strategy, indicator of not understanding? Consistent with `naturalistic Wason improves performance' (others...?)\\
 
 
-\section{Acknowledgments}
+\section{Acknowledgements}
 
 This research was supported by... 
 

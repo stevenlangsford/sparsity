@@ -1,6 +1,32 @@
 \begin{thebibliography}{}
 
 \bibitem[\protect\citeauthoryear{%
+Austerweil%
+\ \BBA{} Griffiths%
+}{%
+Austerweil%
+\ \BBA{} Griffiths%
+}{%
+{\protect\APACyear{2011}}%
+}]{%
+austerweil2011deterministic}%
+\APACinsertmetastar{%
+austerweil2011deterministic}%
+Austerweil, J\BPBI L.%
+\BCBT{}\ \BBA{} Griffiths, T\BPBI L.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Seeking confirmation is rational for deterministic
+  hypotheses}{Seeking confirmation is rational for deterministic
+  hypotheses}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Cognitive Science}{35}{3}{499--526}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Cherubini%
 , Rusconi%
 , Russo%
@@ -33,6 +59,32 @@ Cherubini, P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
+Gureckis%
+\ \BBA{} Markant%
+}{%
+Gureckis%
+\ \BBA{} Markant%
+}{%
+{\protect\APACyear{2012}}%
+}]{%
+gureckis2012selfdirectedlearning}%
+\APACinsertmetastar{%
+gureckis2012selfdirectedlearning}%
+Gureckis, T\BPBI M.%
+\BCBT{}\ \BBA{} Markant, D\BPBI B.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Self-Directed Learning A Cognitive and Computational
+  Perspective}{Self-directed learning a cognitive and computational
+  perspective}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Perspectives on Psychological Science}{7}{5}{464--481}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Klayman%
 \ \BBA{} Ha%
 }{%
@@ -56,6 +108,32 @@ Klayman, J.%
   hypothesis testing.}\BBCQ{}
 \newblock
 \APACjournalVolNumPages{Psychological review}{94}{2}{211}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Meder%
+\ \BBA{} Nelson%
+}{%
+Meder%
+\ \BBA{} Nelson%
+}{%
+{\protect\APACyear{2012}}%
+}]{%
+meder2012rewardfnsearch}%
+\APACinsertmetastar{%
+meder2012rewardfnsearch}%
+Meder, B.%
+\BCBT{}\ \BBA{} Nelson, J\BPBI D.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Information search with situation-specific reward
+  functions}{Information search with situation-specific reward
+  functions}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Judgment and Decision Making}{7}{2}{119--148}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
@@ -137,6 +215,54 @@ Nelson, J\BPBI D.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
+Nickerson%
+}{%
+Nickerson%
+}{%
+{\protect\APACyear{1998}}%
+}]{%
+nickerson1998confirmation}%
+\APACinsertmetastar{%
+nickerson1998confirmation}%
+Nickerson, R\BPBI S.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1998}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Confirmation bias: a ubiquitous phenomenon in many
+  guises.}{Confirmation bias: a ubiquitous phenomenon in many guises.}\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Review of General Psychology}{2}{2}{175}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Poletiek%
+\ \BBA{} Berndsen%
+}{%
+Poletiek%
+\ \BBA{} Berndsen%
+}{%
+{\protect\APACyear{2000}}%
+}]{%
+poletiek2000gambles}%
+\APACinsertmetastar{%
+poletiek2000gambles}%
+Poletiek, F\BPBI H.%
+\BCBT{}\ \BBA{} Berndsen, M.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Hypothesis testing as risk behaviour with regard to
+  beliefs}{Hypothesis testing as risk behaviour with regard to beliefs}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Journal of Behavioral Decision
+  Making}{13}{1}{107--123}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Popper%
 }{%
 Popper%
@@ -181,9 +307,31 @@ Settles, B.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
-Wason%
+P.~Wason%
 }{%
-Wason%
+P.~Wason%
+}{%
+{\protect\APACyear{1968}}%
+}]{%
+wason1968secondlook}%
+\APACinsertmetastar{%
+wason1968secondlook}%
+Wason, P.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1968}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{On the failure to eliminate hypotheses: A second look}{On
+  the failure to eliminate hypotheses: A second look}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Thinking and reasoning}{}{}{165--174}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+P\BPBI C.~Wason%
+}{%
+P\BPBI C.~Wason%
 }{%
 {\protect\APACyear{1960}}%
 }]{%
