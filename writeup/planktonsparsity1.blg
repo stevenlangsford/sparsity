@@ -5,46 +5,47 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Database file #1: plankton.bib.bib
 apacite.bst [2007/09/03 v4.00 APA bibliography style]
+Warning--No journal in hendricksonInprepbattleships
 Warning--No address in settles09activelearnlitrev
-You've used 14 entries,
+You've used 16 entries,
             6345 wiz_defined-function locations,
-            1271 strings with 12104 characters,
-and the built_in function-call counts, 25404 in all, are:
-= -- 3107
-> -- 198
-< -- 1236
-+ -- 1330
-- -- 28
-* -- 1706
-:= -- 4854
-add.period$ -- 57
-call.type$ -- 14
-change.case$ -- 70
+            1281 strings with 12360 characters,
+and the built_in function-call counts, 28447 in all, are:
+= -- 3483
+> -- 218
+< -- 1383
++ -- 1475
+- -- 32
+* -- 1899
+:= -- 5430
+add.period$ -- 65
+call.type$ -- 16
+change.case$ -- 80
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 658
-empty$ -- 1002
-format.name$ -- 327
-if$ -- 4743
+cite$ -- 34
+duplicate$ -- 724
+empty$ -- 1128
+format.name$ -- 355
+if$ -- 5323
 int.to.chr$ -- 0
-int.to.str$ -- 28
+int.to.str$ -- 32
 missing$ -- 0
-newline$ -- 329
-num.names$ -- 112
-pop$ -- 367
+newline$ -- 371
+num.names$ -- 128
+pop$ -- 408
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 64
 quote$ -- 0
-skip$ -- 1596
+skip$ -- 1818
 stack$ -- 0
-substring$ -- 1485
-swap$ -- 405
-text.length$ -- 33
+substring$ -- 1646
+swap$ -- 447
+text.length$ -- 37
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 1120
-warning$ -- 1
-while$ -- 111
+type$ -- 1280
+warning$ -- 2
+while$ -- 121
 width$ -- 0
-write$ -- 400
-(There was 1 warning)
+write$ -- 446
+(There were 2 warnings)

@@ -65,13 +65,16 @@ This study aims to directly test the extent to which people are sensitive to the
 
 The sparsity of a hypothesis refers to the proportion of all members of a domain that are indexed by the hypothesis in question: sparse hypotheses index fewer than half of the members of the relevant domain \cite{navarro2011sparsecat}. For example, in the domain `living species' the category `DOGS' is sparse, while `AEROBIC ORGANISM' is a non-sparse, since most living things are not dogs, but do metabolise oxygen. Sparsity can vary in degree: while `dogs' and `poodles' are both sparse categories in the domain of living things, the category `poodles' is more sparse.
 
-Sparsity is one factor impacting the utility of the positive test strategy \cite{klayman1987confirmation, navarro2011sparsecat}. Where the target hypothesis is very sparse, the information value of negative results is greatly reduced, BECAUSE OF MATHS AND STUFF.
+Sparsity is one factor impacting the utility of the positive test strategy \cite{klayman1987confirmation, navarro2011sparsecat}. Where the target hypothesis is very sparse, the expected information value of negative tests is greatly reduced, because the probability of a negative test producing a valuable disconfirming positive result is very low. %better actually write an equation here?
+Even when the candidate hypothesis is completely misplaced, testing outside it is unlikely to land on such a small critical area, and if it is approximately correct, even this small chance is reduced. Conversely, if the target hypothesis is non-sparse, the value of positive testing falls, because most positive tests return an expected and therefore uniformative positive result.
 
-This paper examines human behaviour in one particular task ??from family X??, a sorting task asking participants to learn a category boundary in a stimulus space consisting of simple geometric shapes varying on three feature-dimensions. Participants were able to request labels for a randomly selected positive example of the target category or a negative non-target example. Participants were aware of what proportion of all stimuli belonged to the target category, and between-subjects manipulations of this proportion showed both a sensitivity to the information value of each type of request and a preference for requesting positive examples.
+Previous work has shown that people are sensitive to the effect of sparsity on request value in a modified battleships game \cite{hendricksonInprepbattleships}. In this experiment, hypotheses corresponded to a configuration of `ships' outlining areas in a two dinemsional space. This study aims to determine if this result replicates in an task where the target hypothesis delineates an abstract area in a similarity space rather than a concrete area in a physical space.
 
-Missing: emphasis on abstract non-spatial nature of hypothesis space, contrast battleships?
-Nice quote for this: `` ... recourse to asymmetric testing... probably depends on context-related motivations and prior knowledge. In abstract tasks, where that knowledge is not available, more simple strategies, such as positive testing, are prevalent''
-[Relationship between `asymmetry' and information sensitivity is not simple... also, their specific abstract task is a monster, evidence consistent with "+'ve tests as fallback under bamboozlement"]
+The abstract task used was a sorting task asking participants to learn a category boundary in a stimulus space consisting of simple geometric shapes varying on three feature-dimensions, described below. Participants were able to request labels for a randomly selected positive example of the target category or a negative non-target example. Participants were aware of what proportion of all stimuli belonged to the target category, and between-subjects manipulations of this proportion showed both a sensitivity to the information value of each type of request and a preference for requesting positive examples.
+
+%Still missing: more battleships?
+%Nice quote for abstract/concrete contrast: `` ... recourse to asymmetric testing... probably depends on context-related motivations and prior knowledge. In abstract tasks, where that knowledge is not available, more simple strategies, such as positive testing, are prevalent''
+%[Relationship between `asymmetry' and information sensitivity is not simple... also, their specific abstract task is a monster, evidence consistent with "+'ve tests as fallback under bamboozlement"]
 
 \section*{Experiment}
 %{\bf Participants}. 
@@ -112,7 +115,7 @@ The differences in means appear to be due to a qualitative shift between distinc
 (see Figure \ref{propposdots}).
 
 \begin{figure}[htb]
-\includegraphics[width=.5\textwidth]{propposbypcrichdots.png}
+\includegraphics[width=.5\textwidth]{propposplotlines.png}
 \caption{Proportion of positive requests appear to cluster at values 0, 0.5, and 1. The observed differences between means may be driven by participants choosing between a small number of distinct request strategies.}
 \label{propposdots}
 \end{figure}
@@ -127,21 +130,28 @@ This clustering of request proportions motivates a categorization of responses b
 
 All strategies were followed by some participants in all conditions, and the `Even' request strategy balancing positive and negative requests was always the most popular, never lower than 44\% of participants. The population percentage of `rich' plankton did impact on the attractiveness of each testing strategy: the proportion of people preferring positive tests fell from 37\% in the 25\% rich condition to 21\% in the 75\% rich condition, while the proportion of people preferring negative tests rose from 19\% to 33\%, indicating a preference for whichever type of test corresponded to the minority classification in the whole population. When the population was evenly split, the `Even' testing strategy was more popular than otherwise at 50\% of all participants, and a preference for positive tests was more common that a preference for negative tests, at 27\% and 23\% of participants respectively.
 
+\begin{figure}[htb]
+\includegraphics[width=.5\textwidth]{pposdensitybyscore.png}
+\caption{Both high-scoring trials (n=117) and low-scoring trials (n=245) show the same clustering pattern at 0,.5,and 1}
+\label{densitybyscore}
+\end{figure}
+
 
 \section{Discussion}
 %Conclusions
-The results show people adjusting their sampling strategies in response to the sparsity of the hypothesis testing task at hand, supporting an information sensitive account of natural hypothesis testing\cite{navarro2011sparsecat}. This sensitivity to the relative size of the target category in the stimulus space obtains even though this is an abstract space defined over the similarity of a set of geometrical shapes. The effect appears more pronounced amoung participants who achieved high scores, but the predicted sparsity-based sampling differences are also apparent among participants with less-than-perfect scores, making it unlikely that the pattern observed is due to deductive problem-solving by a subset of participants. %Is there a better way of saying `gaming the task', ie ``result is (probably) not a totally artificial product of task demands''.  
+The results show people adjusting their sampling strategies in response to the sparsity of the hypothesis testing task at hand, supporting an information sensitive account of natural hypothesis testing\cite{navarro2011sparsecat}. This sensitivity to the relative size of the target category in the stimulus space obtains even though this is an abstract space defined over the similarity of a set of geometrical shapes. The effect appears more pronounced amoung participants who achieved high scores, but the predicted sparsity-based sampling differences are also apparent among participants with less-than-perfect scores, making it unlikely that the pattern observed is due a subset of participants deducing an optimal strategy for this particular task. %Is there a better way of saying `gaming the task', ie ``result is (probably) not a totally artificial product of task demands''.  
 
-Although consistent with a degree of sensitivity to the information value of requests, these data show a number of ways in which people's requests deviate from information-utility treatments of the task. Firstly, a positive testing bias is evident, with participants favouring the target `rich' category asymmetrically despite the symmetry of the task under the sparsity manipulation. It's unclear if this is due to a form of matching [CITE!] or an expectation that the conditions that favour positive testing are generally ubiquitous, although in this artificial case they are not.
-The clustering of positive-test proportions at the special values 0, .5, and 1 in all conditions also suggests a kind of heuristic approach, albeit a heuristic that is to some extent context sensitive. It is unclear from these results if this clustering is reflective of granularity in the perception of request utility, an effort-saving heuristic in responding after accurate perception of request utility, or simply an artifact of the fact that participants were limited to two different request types, which to some extent naturally emphasises these values, especially for small numbers of requests.
+Although consistent with a degree of sensitivity to the information value of requests, these data show a number of ways in which people's requests deviate from information-utility treatments of the task. Firstly, a positive testing bias is evident, with participants favouring the target `rich' category asymmetrically despite the symmetry of the task under the sparsity manipulation. It's unclear if this is due to a form of matching\cite{evans1998matching} or an expectation that the conditions that favour positive testing are generally ubiquitous, although in this artificial case they are not.
+The clustering of positive-test proportions at the special values 0, .5, and 1 in all conditions also suggests a kind of heuristic approach, albeit a heuristic that is to some extent context sensitive. It is unclear from these results if this clustering is reflective of granularity in the perception of request utility, granularity in responding after accurate perception of request utility, or simply an artifact of the fact that participants were limited to two different request types, which to some extent naturally emphasises these values, especially for small numbers of requests.
 
 %Limitations
--Lots of drop-out, high exclusion rate. Suspicious?\\
--Visual box-sizes for grouping plankton, undermines claim of abstract hypothesis space?\\
--How critical is being able to see all possible plankton examples? Knowledge of limits of variation critical for sparsity manipulation? (Rarely available in real life...?)\\
+These conclusions are also subject to a number of limitations. The number of particpants who viewed but did not complete the task was high, raising the possibility that this self-selected sample is unrepresentative. A number of features of the presentation are also open to question. All possible plankton shapes were visible to participants at all times, a situation unlikely to obtain with natural categories, but one which might influence the use of sparsity information, since estimating the proportion of stimuli indexed by a hypothesis in a given domain requires an estimate of the boundaries of that domain. Similarly, the density of examples was even across the stimulus space, with one example of each kind of plankton, a condition which need not hold in general. The true category rules were also highly restricted, in that they were all thresholds on a single dimension, binary and strictly complementary. Natural categories are often nested, or otherwise overlap, and often involve multiple dimensions. Further work is required to explore how people sample under these more complex conditions: the results presented here suggest both heuristic accounts and information-utility accounts will be needed.
+
+%visual box around plankton undermines claim of abstract space?
 
 %Further questions....
--How fine-grained are these judgements? Could a different design get smoother response variation with more smoothly varying information value, or (more) strategy-clusters in different places? (ie, battleships... so, yes?). Note everything here is discrete: features are discrete, selenoid status is binary, request type also binary, possibly this artificially encourages the clustering seen here? Testable: what if there are three categories, and three label-request buttons?\\
+
+
 -Positivity bias attenuated in higher scoring group? (No relevant results reported in this draft). positivity bais possibly a fallback strategy, indicator of not understanding? Consistent with `naturalistic Wason improves performance' (others...?)\\
 
 

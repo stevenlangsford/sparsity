@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  10 DEC 2013 22:12
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  11 DEC 2013 23:59
 entering extended mode
  %&-line parsing enabled.
 **planktonsparsity1.tex
@@ -278,55 +278,63 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 87.
 
 <minstim.png, id=7, 226.8475pt x 56.21pt>
 File: minstim.png Graphic file (type png)
- <use minstim.png> [2 <./minstim.png>] <propposbypcrichdots.png, id=14, 505.89p
-t x 505.89pt>
-File: propposbypcrichdots.png Graphic file (type png)
+ <use minstim.png> [2 <./minstim.png>] <propposplotlines.png, id=14, 505.4082pt
+ x 505.6491pt>
+File: propposplotlines.png Graphic file (type png)
 
-<use propposbypcrichdots.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 115--116
+<use propposplotlines.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 118--119
 [][] 
  []
 
 <sidebysidebar3.png, id=15, 505.89pt x 505.89pt>
 File: sidebysidebar3.png Graphic file (type png)
  <use sidebysidebar3.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 123--124
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 126--127
 [][] 
  []
 
-[3 <./propposbypcrichdots.png (PNG copy)> <./sidebysidebar3.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 139--142
+<pposdensitybyscore.png, id=16, 505.4082pt x 505.6491pt>
+File: pposdensitybyscore.png Graphic file (type png)
 
+<use pposdensitybyscore.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 134--135
+[][] 
+ []
+
+[3 <./propposplotlines.png (PNG copy)> <./sidebysidebar3.png (PNG copy)>]
+Underfull \hbox (badness 3601) in paragraph at lines 155--156
+[]\OT1/ptm/m/n/10 -Positivity bias at-ten-u-ated in higher scor-ing group?
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
-(./planktonsparsity1.bbl) [4] (./planktonsparsity1.aux) ) 
+(./planktonsparsity1.bbl) [4 <./pposdensitybyscore.png (PNG copy)>]
+(./planktonsparsity1.aux) ) 
 Here is how much of TeX's memory you used:
- 4201 strings out of 495061
- 56685 string characters out of 1182621
- 122201 words of memory out of 3000000
- 7337 multiletter control sequences out of 15000+50000
+ 4215 strings out of 495061
+ 57031 string characters out of 1182621
+ 123201 words of memory out of 3000000
+ 7350 multiletter control sequences out of 15000+50000
  30649 words of font info for 61 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  36i,8n,38p,1803b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texl
-ive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
-are/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fo
-nts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on planktonsparsity1.pdf (4 pages, 115941 bytes).
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.en
+c}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
+live/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/
+urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on planktonsparsity1.pdf (4 pages, 413960 bytes).
 PDF statistics:
  46 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

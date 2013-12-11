@@ -59,6 +59,29 @@ Cherubini, P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
+Evans%
+}{%
+Evans%
+}{%
+{\protect\APACyear{1998}}%
+}]{%
+evans1998matching}%
+\APACinsertmetastar{%
+evans1998matching}%
+Evans, J\BPBI S\BPBI B.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1998}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Matching bias in conditional reasoning: Do we understand
+  it after 25 years?}{Matching bias in conditional reasoning: Do we understand
+  it after 25 years?}\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Thinking \& Reasoning}{4}{1}{45--110}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Gureckis%
 \ \BBA{} Markant%
 }{%
@@ -82,6 +105,28 @@ Gureckis, T\BPBI M.%
   perspective}.\BBCQ{}
 \newblock
 \APACjournalVolNumPages{Perspectives on Psychological Science}{7}{5}{464--481}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Hendrickson%
+}{%
+Hendrickson%
+}{%
+{\protect\APACyear{InPreparation}}%
+}]{%
+hendricksonInprepbattleships}%
+\APACinsertmetastar{%
+hendricksonInprepbattleships}%
+Hendrickson, D.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{InPreparation}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{<<Working Title>> Battleships}{<<working title>>
+  battleships}.\BBCQ{}
+\newblock
+
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
