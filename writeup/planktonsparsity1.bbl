@@ -112,7 +112,7 @@ Hendrickson%
 }{%
 Hendrickson%
 }{%
-{\protect\APACyear{InPreparation}}%
+{\protect\APACyear{in preparation}}%
 }]{%
 hendricksonInprepbattleships}%
 \APACinsertmetastar{%
@@ -121,7 +121,7 @@ Hendrickson, D.%
 %
 \unskip\
 \newblock
-\APACrefYearMonthDay{InPreparation}{}{}.
+\APACrefYearMonthDay{in preparation}{}{}.
 \newblock
 \BBOQ{}\APACrefatitle{<<Working Title>> Battleships}{<<working title>>
   battleships}.\BBCQ{}
@@ -330,6 +330,37 @@ Popper, K\BPBI R.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
+Rusconi%
+, Marelli%
+, Russo%
+, D’Addario%
+\BCBL{}\ \BBA{} Cherubini%
+}{%
+Rusconi%
+\ \protect\BOthers{.}}{%
+{\protect\APACyear{2012}}%
+}]{%
+rusconi2012baseratenewinfo}%
+\APACinsertmetastar{%
+rusconi2012baseratenewinfo}%
+Rusconi, P.%
+, Marelli, M.%
+, Russo, S.%
+, D’Addario, M.%
+\BCBL{}\ \BBA{} Cherubini, P.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{Integration of base rates and new information in an
+  abstract hypothesis-testing task}{Integration of base rates and new
+  information in an abstract hypothesis-testing task}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{British Journal of Psychology}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
 Settles%
 }{%
 Settles%
@@ -352,9 +383,32 @@ Settles, B.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem[\protect\citeauthoryear{%
-P.~Wason%
+Wason%
 }{%
-P.~Wason%
+Wason%
+}{%
+{\protect\APACyear{1960}}%
+}]{%
+wason1960failure}%
+\APACinsertmetastar{%
+wason1960failure}%
+Wason, P.%
+%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1960}{}{}.
+\newblock
+\BBOQ{}\APACrefatitle{On the failure to eliminate hypotheses in a conceptual
+  task}{On the failure to eliminate hypotheses in a conceptual task}.\BBCQ{}
+\newblock
+\APACjournalVolNumPages{Quarterly journal of experimental
+  psychology}{12}{3}{129--140}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem[\protect\citeauthoryear{%
+Wason%
+}{%
+Wason%
 }{%
 {\protect\APACyear{1968}}%
 }]{%
@@ -371,29 +425,6 @@ Wason, P.%
   the failure to eliminate hypotheses: A second look}.\BBCQ{}
 \newblock
 \APACjournalVolNumPages{Thinking and reasoning}{}{}{165--174}.
-\PrintBackRefs{\CurrentBib}
-
-\bibitem[\protect\citeauthoryear{%
-P\BPBI C.~Wason%
-}{%
-P\BPBI C.~Wason%
-}{%
-{\protect\APACyear{1960}}%
-}]{%
-wason1960failure}%
-\APACinsertmetastar{%
-wason1960failure}%
-Wason, P\BPBI C.%
-%
-\unskip\
-\newblock
-\APACrefYearMonthDay{1960}{}{}.
-\newblock
-\BBOQ{}\APACrefatitle{On the failure to eliminate hypotheses in a conceptual
-  task}{On the failure to eliminate hypotheses in a conceptual task}.\BBCQ{}
-\newblock
-\APACjournalVolNumPages{Quarterly journal of experimental
-  psychology}{12}{3}{129--140}.
 \PrintBackRefs{\CurrentBib}
 
 \end{thebibliography}

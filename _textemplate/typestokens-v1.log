@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  17 DEC 2013 11:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.1.31)  3 DEC 2013 10:02
 entering extended mode
  %&-line parsing enabled.
-**planktonsparsity1.tex
-(./planktonsparsity1.tex
+**typestokens-v1.tex
+(./typestokens-v1.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, loaded.
@@ -187,34 +187,33 @@ Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
 )
 \c@ContinuedFloat=\count101
 )
-(./planktonsparsity1.aux)
-\openout1 = `planktonsparsity1.aux'.
+No file typestokens-v1.aux.
+\openout1 = `typestokens-v1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 35.
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 35
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 37
 .
-
 (/usr/share/texmf-texlive/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 35.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 35.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 37.
 
 (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    ... okay on input line 37.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -232,121 +231,179 @@ LaTeX Font Info:    ... okay on input line 35.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 37
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 39
 .
  (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 37
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 39
 .
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 37
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 39
 .
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
-LaTeX Font Info:    Try loading font information for U+msa on input line 37.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 37.
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 42.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
-
-Underfull \hbox (badness 1521) in paragraph at lines 58--59
-[]\OT1/ptm/m/n/10 One im-por-tant ob-ser-va-tion, due to Klay-man and Ha
- []
-
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
+
+LaTeX Warning: File `figs/stimuli.pdf' not found on input line 82.
+
+
+! Package pdftex.def Error: File `figs/stimuli.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 ...ludegraphics[scale=0.23]{figs/stimuli.pdf}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 96.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 96.
 
-<screenshot.png, id=7, 1027.84pt x 602.25pt>
-File: screenshot.png Graphic file (type png)
- <use screenshot.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 87--88
-[][] 
+LaTeX Warning: Reference `stimuli' on page 2 undefined on input line 98.
+
+
+LaTeX Warning: Reference `stimuli' on page 2 undefined on input line 117.
+
+
+LaTeX Warning: Reference `stimuli' on page 2 undefined on input line 117.
+
+
+LaTeX Warning: Reference `stimuluslist' on page 2 undefined on input line 123.
+
+
+LaTeX Warning: Reference `stimuli' on page 2 undefined on input line 123.
+
+[2]
+Overfull \hbox (5.91774pt too wide) in paragraph at lines 129--150
+ [] 
  []
 
 
-Underfull \vbox (badness 3281) has occurred while \output is active []
-
- [2 <./screenshot.png (PNG copy)>] <minstim.png, id=12, 226.8475pt x 56.21pt>
-File: minstim.png Graphic file (type png)
-
-<use minstim.png> <propposplotlines.png, id=14, 505.4082pt x 505.6491pt>
-File: propposplotlines.png Graphic file (type png)
-
-<use propposplotlines.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 119--120
-[][] 
- []
-
-<sidebysidebar3.png, id=15, 505.4082pt x 505.6491pt>
-File: sidebysidebar3.png Graphic file (type png)
- <use sidebysidebar3.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 127--128
-[][] 
- []
-
-[3 <./minstim.png> <./propposplotlines.png (PNG copy)>]
-<pposdensitybyscore.png, id=23, 505.4082pt x 505.6491pt>
-File: pposdensitybyscore.png Graphic file (type png)
-
-<use pposdensitybyscore.png>
-Overfull \hbox (9.03374pt too wide) in paragraph at lines 137--138
-[][] 
- []
+LaTeX Warning: Reference `teststimuli' on page 3 undefined on input line 165.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: File `data/typegen.pdf' not found on input line 183.
 
- [4 <./sidebysidebar3.png (PNG copy)> <./pposdensitybyscore.png (PNG copy)>]
-(./planktonsparsity1.bbl
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no ™ in font ptmr7t!
-) [5] (./planktonsparsity1.aux) ) 
+
+! Package pdftex.def Error: File `data/typegen.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.183 ...ludegraphics[scale=0.2]{data/typegen.pdf}
+                                                   & \hspace{-5mm}\includegr...
+
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `data/quantitygen.pdf' not found on input line 183.
+
+
+! Package pdftex.def Error: File `data/quantitygen.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.183 ...graphics[scale=0.2]{data/quantitygen.pdf}
+                                                   &  \hspace{-5mm}\includeg...
+
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `data/memorygen.pdf' not found on input line 183.
+
+
+! Package pdftex.def Error: File `data/memorygen.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.183 ...degraphics[scale=0.2]{data/memorygen.pdf}
+                                                   \\
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `rawgeneralization' on page 3 undefined on input line 
+190.
+
+
+LaTeX Warning: Reference `rawgeneralization' on page 3 undefined on input line 
+192.
+
+[3]
+No file typestokens-v1.bbl.
+[4] (./typestokens-v1.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4225 strings out of 495061
- 57254 string characters out of 1182621
- 122201 words of memory out of 3000000
- 7359 multiletter control sequences out of 15000+50000
- 30649 words of font info for 61 fonts, out of 3000000 for 9000
+ 4187 strings out of 495061
+ 55319 string characters out of 1182621
+ 125201 words of memory out of 3000000
+ 7300 multiletter control sequences out of 15000+50000
+ 54606 words of font info for 109 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 36i,8n,38p,1292b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base
-/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
-mf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/
-type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr
-8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on planktonsparsity1.pdf (5 pages, 559082 bytes).
+ 36i,11n,38p,1642b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.
+pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
+exmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri
+8a.pfb>
+Output written on typestokens-v1.pdf (4 pages, 108925 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 48 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -7,45 +7,45 @@ Database file #1: plankton.bib.bib
 apacite.bst [2007/09/03 v4.00 APA bibliography style]
 Warning--No journal in hendricksonInprepbattleships
 Warning--No address in settles09activelearnlitrev
-You've used 16 entries,
+You've used 17 entries,
             6345 wiz_defined-function locations,
-            1281 strings with 12360 characters,
-and the built_in function-call counts, 28447 in all, are:
-= -- 3483
-> -- 218
-< -- 1383
-+ -- 1475
-- -- 32
-* -- 1899
-:= -- 5430
-add.period$ -- 65
-call.type$ -- 16
-change.case$ -- 80
+            1284 strings with 12586 characters,
+and the built_in function-call counts, 30279 in all, are:
+= -- 3671
+> -- 245
+< -- 1497
++ -- 1560
+- -- 34
+* -- 2037
+:= -- 5798
+add.period$ -- 69
+call.type$ -- 17
+change.case$ -- 85
 chr.to.int$ -- 0
-cite$ -- 34
-duplicate$ -- 724
-empty$ -- 1128
-format.name$ -- 355
-if$ -- 5323
+cite$ -- 36
+duplicate$ -- 761
+empty$ -- 1203
+format.name$ -- 397
+if$ -- 5652
 int.to.chr$ -- 0
-int.to.str$ -- 32
+int.to.str$ -- 34
 missing$ -- 0
-newline$ -- 371
-num.names$ -- 128
-pop$ -- 408
+newline$ -- 400
+num.names$ -- 136
+pop$ -- 431
 preamble$ -- 1
-purify$ -- 64
+purify$ -- 68
 quote$ -- 0
-skip$ -- 1818
+skip$ -- 1939
 stack$ -- 0
-substring$ -- 1646
-swap$ -- 447
-text.length$ -- 37
+substring$ -- 1718
+swap$ -- 471
+text.length$ -- 39
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 1280
+type$ -- 1360
 warning$ -- 2
-while$ -- 121
+while$ -- 129
 width$ -- 0
-write$ -- 446
+write$ -- 488
 (There were 2 warnings)
