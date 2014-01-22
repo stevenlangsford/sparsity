@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: planktonsparsity2.aux
+The style file: apacite.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Database file #1: plankton.bib.bib
+apacite.bst [2007/09/03 v4.00 APA bibliography style]
+Warning--No journal in hendricksonInprepbattleships
+Warning--No address in settles09activelearnlitrev
+You've used 15 entries,
+            6345 wiz_defined-function locations,
+            1274 strings with 12153 characters,
+and the built_in function-call counts, 26248 in all, are:
+= -- 3200
+> -- 204
+< -- 1288
++ -- 1343
+- -- 30
+* -- 1759
+:= -- 5029
+add.period$ -- 61
+call.type$ -- 15
+change.case$ -- 75
+chr.to.int$ -- 0
+cite$ -- 32
+duplicate$ -- 645
+empty$ -- 1049
+format.name$ -- 323
+if$ -- 4914
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 0
+newline$ -- 347
+num.names$ -- 120
+pop$ -- 377
+preamble$ -- 1
+purify$ -- 60
+quote$ -- 0
+skip$ -- 1694
+stack$ -- 0
+substring$ -- 1486
+swap$ -- 406
+text.length$ -- 35
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 1200
+warning$ -- 2
+while$ -- 106
+width$ -- 0
+write$ -- 416
+(There were 2 warnings)

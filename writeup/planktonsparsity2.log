@@ -1,0 +1,345 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.20)  10 JAN 2014 14:54
+entering extended mode
+ %&-line parsing enabled.
+**planktonsparsity2.tex
+(./planktonsparsity2.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./cogsci.sty
+Conference Style for COGSCI -- last modified October 24, 2006
+) (/usr/share/texmf-texlive/tex/latex/pslatex/pslatex.sty
+Package: pslatex 1996/07/24 v1.2 pslatex emulation (DPC)
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 65.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ptmcm/m/n on input line 65.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptmcm/m/n on input line 65.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 66.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ptmcm/m/it on input line 66.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ptmcm/m/it on input line 66.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 67.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/pzccm/m/n on input line 67.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/pzccm/m/n on input line 67.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 68.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 68.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 68.
+\symbold=\mathgroup4
+\symitalic=\mathgroup5
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 74.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 74.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 74.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 75.
+) (./apacite.sty
+Package: apacite 2007/09/03 v4.00 APA citation
+\c@BibCnt=\count87
+\bibleftmargin=\skip43
+\bibindent=\skip44
+\bibparsep=\skip45
+\bibitemsep=\skip46
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip47
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks16
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip48
+\multlinetaggap=\skip49
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup6
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
+(/usr/share/texmf/tex/latex/tipa/tipa.sty
+Package: tipa 2002/08/08 TIPA version 1.1
+
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 356.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 357.
+)
+(/usr/share/texmf-texlive/tex/latex/base/ot1enc.def
+File: ot1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
+)))
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen114
+\captionmargin@=\dimen115
+\captionwidth=\dimen116
+\caption@indent=\dimen117
+\caption@parindent=\dimen118
+\caption@hangindent=\dimen119
+)
+\c@ContinuedFloat=\count101
+)
+(./planktonsparsity2.aux)
+\openout1 = `planktonsparsity2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 37
+.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omspzccm.fd
+File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
+)
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 37.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 37.
+
+(/usr/share/texmf/tex/latex/tipa/t3cmr.fd
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 37.
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count102
+\scratchdimen=\dimen120
+\scratchbox=\box28
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen121
+\MPnumerator=\count106
+\everyMPtoPDFconversion=\toks21
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 39
+.
+ (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptmcm.fd
+File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
+)
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 39
+.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omlptmcm.fd
+File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
+)
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 39
+.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omxpsycm.fd
+File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 44.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+
+]
+Underfull \vbox (badness 1803) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 91.
+
+<screenshot.png, id=8, 1027.84pt x 602.25pt>
+File: screenshot.png Graphic file (type png)
+ <use screenshot.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 104--105
+[][] 
+ []
+
+[2] <minstim.png, id=13, 226.8475pt x 56.21pt>
+File: minstim.png Graphic file (type png)
+ <use minstim.png>
+<propposplotlines.png, id=15, 505.4082pt x 505.6491pt>
+File: propposplotlines.png Graphic file (type png)
+
+<use propposplotlines.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 138--139
+ [][] 
+ []
+
+
+Underfull \vbox (badness 1147) has occurred while \output is active []
+
+ [3 <./screenshot.png (PNG copy)> <./minstim.png> <./propposplotlines.png (PNG 
+copy)>]
+<sidebysidebar3.png, id=23, 505.4082pt x 505.6491pt>
+File: sidebysidebar3.png Graphic file (type png)
+ <use sidebysidebar3.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 146--147
+[][] 
+ []
+
+
+Underfull \vbox (badness 2150) has occurred while \output is active []
+
+
+<pposdensitybyscore.png, id=24, 505.4082pt x 505.6491pt>
+File: pposdensitybyscore.png Graphic file (type png)
+
+<use pposdensitybyscore.png>
+Overfull \hbox (9.03374pt too wide) in paragraph at lines 156--157
+[][] 
+ []
+
+[4 <./sidebysidebar3.png (PNG copy)> <./pposdensitybyscore.png (PNG copy)>]
+(./planktonsparsity2.bbl) [5] (./planktonsparsity2.aux) ) 
+Here is how much of TeX's memory you used:
+ 4217 strings out of 495061
+ 57022 string characters out of 1182620
+ 122201 words of memory out of 3000000
+ 7351 multiletter control sequences out of 15000+50000
+ 30649 words of font info for 61 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 36i,8n,38p,1292b,302s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texl
+ive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sh
+are/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fo
+nts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on planktonsparsity2.pdf (5 pages, 424881 bytes).
+PDF statistics:
+ 52 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+
