@@ -1,0 +1,16 @@
+DISCUSSION
+- need a conclusion sentence. i would start a new para with "further work is required" and then end with some sentence saying something like "regardless of how this is achieved, this research is the first to show that people are sensitivity to the overall nature of the hypotheses -- i.e., their sparsity -- when seeking out information in a conceptual domain." (or something like that, it's not ideal, but you get the point)
+
+- in general the language is pretty tight but there are still bits that you could streamline more: e.g., "it is useful to recognise that.." (p1) [could excise], "what these measures share" --> "these measures share" and so forth
+
+MORE MINOR 
+- p1 "confirmatory test - in the sense that ..." is rather awkward. maybe "confirmatory tests, which are consistent with [blah blah], can often be very informative."
+- try where possible to cite things at the end of the sentence; it's far more readable. e.g. last para of p1 "showing the value of confirmatory evidence (BLAH) do not imply.." just put the citations at the end, it's still interpretable, and way easier to read. look for this and change it throughout the paper
+- top of p2, it's hard to read with all the categories in single quotes. a common way to do this is small caps (which is \sc in latex). e.g. "in the domain of living species, the category DOGS is sparse, while AEROBIC ORGANISM is not.."
+- top of p2 "a non-sparse" --> "not sparse"
+- refer to Hendrickson et al, not Hendrickson. ask him for the working title, i think he has one.
+- p2 "in this task, all hypotheses have the same sparsity" --> this was confusing and also I think unnecessary - the key point is the next sentence
+- in general spell out numbers that are ten or less, e.g., in the method etc.
+- p3 "highly successful, defined as [BLAH]" --> "highly successful: on 18% of all trials, people required fewer than six labels to sort at least 93% correctly."
+
+- could probably do with a bit of elaboration of the paragraph beginning "one potential problem.." because that really motivates this work. basically point out that since Hendrickson et al is so visual, the visual system could have been doing a lot of the work, but of course in the real world most situations where you might need to seek out information are not visual
