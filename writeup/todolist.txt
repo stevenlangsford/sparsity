@@ -1,1 +1,3 @@
-- refer to Hendrickson et al, not Hendrickson. ask him for the working title, i think he has one.
+
+- Check to make sure you've used US spelling: "coloured" -> "colored",
+"behaviour" -> "behavior", "generalise" -> "generalize" etc

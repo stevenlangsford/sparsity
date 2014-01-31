@@ -1,3 +1,15 @@
-flip-flopped on similarity of high and low scoring groups: cahnge of plot, also ran the stats...
+Intro changed to:
+"Very few people ever become professional chicken-sexers, but most of us can identify with the \textit{kind} of problem they face. Collections of ambiguous targets that need to be categorized are common. Opal miners, worlds away from poultry-breeding, face a similar problem sorting through piles of nearly identical rocks for the few that, if polished, may reveal a gemstone shine. Consider the problem faced by a novice in each of these fields trying to become expert via training examples from some authoritative test, perhaps an expert teacher. What kinds of examples should they seek in order to become an expert themselves as quickly as possible? At first glance, different problem domains require different strategies. A natural strategy for the chicken-sexer might be to request an even number of examples of both male and female chicks. The beginner opal miner on the other hand, is probably only interested in seeing examples of opals in the raw. The central claim of this paper is that these differing tendencies can be described under the same normative framework, and reflect a rational sensitivity to features of the problem domain: in this case that chicks of either sex are nearly equally likely, while opals are rare among rocks.
 
-Whups, go back and find the actual test stat for that KS test, just reporting the p is not IT.
+As tasks that involve some learner control over what information will be recieved, novice opal mining and chicken sexing can be considered examples of active learning \cite{settles09activelearnlitrev,gureckis2012selfdirectedlearning}. The psychological literature has considered a number of different normative standards against which human behavior in such tasks can be assessed \cite{nelson2005usefulquestions}."
+
+'indexed by a hypothesis' changed to:
+"...it works when the possible hypotheses are {\it sparse}. If hypotheses are thought of as indicating meaningful subsets of some larger domain, the sparsity of a hypothesis refers to the proportion of all members of a domain that are selected. Sparse hypotheses include fewer than half of the members of the relevant domain \cite{navarro2011sparsecat}. For example, in the domain {\sc living species} the category {\sc dogs} is sparse, while {\sc aerobic organism} is a not sparse, since most living things are not dogs, but do metabolise oxygen. Sparsity can vary in degree: while {\sc dogs} and {\sc poodles} are both sparse categories in the domain of living things, the category {\sc poodles} is more sparse. Arbitrarily complex hypotheses can still be described in terms of a set of members, for example when describing a linguistic hypothesis in terms of the set of sentences the hypothesis considers grammatical."
+
+'trial' removed from method:
+"The remaining 180 participants completed one practice run and two real runs of the sorting task, with between 104 and 131 completed sorts recorded in each of three sparsity conditions."
+
+The example of a complex sentence has been changed to:
+"Individual participants tended to use either balanced requests or requests of a single type, but the popularity of these strategies varied across conditions."
+
+I'll have a look through for other similar tangled sentences... if only there was some kind of theory that would tell me which sentences would be most informative to request a judgement on...

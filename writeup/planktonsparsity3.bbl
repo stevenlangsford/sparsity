@@ -109,22 +109,26 @@ Gureckis, T\BPBI M.%
 
 \bibitem[\protect\citeauthoryear{%
 Hendrickson%
+, Navarro%
+\BCBL{}\ \BBA{} Perfors%
 }{%
 Hendrickson%
-}{%
+\ \protect\BOthers{.}}{%
 {\protect\APACyear{in preparation}}%
 }]{%
 hendricksonInprepbattleships}%
 \APACinsertmetastar{%
 hendricksonInprepbattleships}%
-Hendrickson, D.%
+Hendrickson, A\BPBI T.%
+, Navarro, D\BPBI J.%
+\BCBL{}\ \BBA{} Perfors, A\BPBI F.%
 %
 \unskip\
 \newblock
 \APACrefYearMonthDay{in preparation}{}{}.
 \newblock
-\BBOQ{}\APACrefatitle{<<Working Title>> Battleships}{<<working title>>
-  battleships}.\BBCQ{}
+\BBOQ{}\APACrefatitle{People are sensitive to hypothesis sparsity}{People are
+  sensitive to hypothesis sparsity}.\BBCQ{}
 \newblock
 
 \PrintBackRefs{\CurrentBib}

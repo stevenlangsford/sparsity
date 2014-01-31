@@ -1,16 +1,79 @@
-DISCUSSION
-- need a conclusion sentence. i would start a new para with "further work is required" and then end with some sentence saying something like "regardless of how this is achieved, this research is the first to show that people are sensitivity to the overall nature of the hypotheses -- i.e., their sparsity -- when seeking out information in a conceptual domain." (or something like that, it's not ideal, but you get the point)
+- You might want to wait for Amy and Drew to comment as well, but to
+me the opening examples feel a little too broad, and not closely
+matched to the structure of the hypothesis testing task. I do share
+Amy's desire to have the start of the paper connect a little to a real
+world problem, but it should also be clearly connected (in spirit at
+least) to the experiment that you run. The issue as I see it is that
+almost anything in which humans obtain data and make inferences can be
+construed as a form of hypothesis testing, and I don't think anyone
+would feel that our task is a good proxy for all of them. For
+instance, the doctor example is a little unusual in that the doctor's
+goal isn't to learn about the concept of "illness X", it is to
+diagnose patients.
 
-- in general the language is pretty tight but there are still bits that you could streamline more: e.g., "it is useful to recognise that.." (p1) [could excise], "what these measures share" --> "these measures share" and so forth
+- I think the definition of sparsity is a unclear. What does it mean
+to refer to "the proportion of all members of a domain that are
+indexed by the hypothesis in question"? A naive reader won't
+understand what "indexed by" means in this context. I think it might
+make more sense to try to say that every hypothesis picks out a set of
+entities for which it is true: e.g., if we're talking about a
+language, then every hypothesis about that language corresponds to a
+set of possible sentences that would be grammatical if the hypothesis
+were true. A hypothesis is said to be "sparse" if that set contains
+only a minority of possible entities.  I'm not generally in favour of
+suggesting that people use wordier language, but in this case I think
+you need to do something to make clear what "indexed by a hypothesis"
+means.
 
-MORE MINOR 
-- p1 "confirmatory test - in the sense that ..." is rather awkward. maybe "confirmatory tests, which are consistent with [blah blah], can often be very informative."
-- try where possible to cite things at the end of the sentence; it's far more readable. e.g. last para of p1 "showing the value of confirmatory evidence (BLAH) do not imply.." just put the citations at the end, it's still interpretable, and way easier to read. look for this and change it throughout the paper
-- top of p2, it's hard to read with all the categories in single quotes. a common way to do this is small caps (which is \sc in latex). e.g. "in the domain of living species, the category DOGS is sparse, while AEROBIC ORGANISM is not.."
-- top of p2 "a non-sparse" --> "not sparse"
-- refer to Hendrickson et al, not Hendrickson. ask him for the working title, i think he has one.
-- p2 "in this task, all hypotheses have the same sparsity" --> this was confusing and also I think unnecessary - the key point is the next sentence
-- in general spell out numbers that are ten or less, e.g., in the method etc.
-- p3 "highly successful, defined as [BLAH]" --> "highly successful: on 18% of all trials, people required fewer than six labels to sort at least 93% correctly."
+- Method section. What do you mean when you say "180 people
+contributed 360 trials"? A "trial" usually refers to a single short
+event in an experiment. It feels a little weird to me to refer to an
+entire sorting task as one trial, especially since that task consists
+of multiple qualitatively distinct events (i.e., label requests vs
+sort actions).
 
-- could probably do with a bit of elaboration of the paragraph beginning "one potential problem.." because that really motivates this work. basically point out that since Hendrickson et al is so visual, the visual system could have been doing a lot of the work, but of course in the real world most situations where you might need to seek out information are not visual
+- Check to make sure you've used US spelling: "coloured" -> "colored",
+"behaviour" -> "behavior", "generalise" -> "generalize" etc
+
+- Figure 7 has the low scoring group in the top row, and the high
+scoring group in the bottom row. I'd reverse this. Also, either have
+the figure caption state which is which explicitly, or change the
+labelling of the rows to say "high scoring" and "low scoring". That's
+easier to process than the "score <=600" text, which is pretty
+meaningless to the casual reader.
+
+- As Amy and I both mentioned, your writing is good given that this is
+your first paper. However, I think you need to work on simplifying
+your language a little. I think you have a slight tendency to wander
+off topic a little. Example:
+
+"Individual participants reflected sensitivity to the information
+value of the different request types in a coarse-grained way,
+gravitating to either balanced requests or requests of a single type".
+
+This sentence has two parts. The first part of it refers to
+"sensitivity to information value", which sets up the reader to think
+that you're about to talk about how people's information requests
+change as a function of sparsity. But the second half of the sentence
+doesn't talk about that at all. Instead, it talks about the fact that
+there were a large number of people whose requests were either 100%
+positive, 50% positive or 0% positive. Nowhere does this sentence (or
+the rest of the paragraph) explain how these three strategies imply
+any "sensitivity to information value", "coarse-grained" or otherwise.
+I *think* that what you have in mind is the fact that the proportion
+of people using these strategies shifts across conditions. But that
+doesn't come through in the text.
+
+I feel like that part was supposed to be a bridge with the previous
+paragraph? Maybe you wanted to say something like
+
+"Although the overall proportion of positive requests changed
+systematically across conditions, there was also systematic variation
+within each condition." ... and then go on to talk about the three
+strategies???
+
+
+Hope that helps. Have to dash. Train coming. Sorry if the email was
+terse: writing in a rush!!
+
+Cheers

@@ -9,43 +9,43 @@ Warning--No journal in hendricksonInprepbattleships
 Warning--No address in settles09activelearnlitrev
 You've used 15 entries,
             6345 wiz_defined-function locations,
-            1274 strings with 12153 characters,
-and the built_in function-call counts, 26248 in all, are:
-= -- 3200
-> -- 204
-< -- 1288
-+ -- 1343
+            1274 strings with 12213 characters,
+and the built_in function-call counts, 26865 in all, are:
+= -- 3282
+> -- 213
+< -- 1325
++ -- 1402
 - -- 30
-* -- 1759
-:= -- 5029
+* -- 1802
+:= -- 5139
 add.period$ -- 61
 call.type$ -- 15
 change.case$ -- 75
 chr.to.int$ -- 0
 cite$ -- 32
-duplicate$ -- 645
-empty$ -- 1049
-format.name$ -- 323
-if$ -- 4914
+duplicate$ -- 672
+empty$ -- 1057
+format.name$ -- 341
+if$ -- 5019
 int.to.chr$ -- 0
 int.to.str$ -- 30
 missing$ -- 0
-newline$ -- 347
+newline$ -- 351
 num.names$ -- 120
-pop$ -- 377
+pop$ -- 384
 preamble$ -- 1
 purify$ -- 60
 quote$ -- 0
-skip$ -- 1694
+skip$ -- 1709
 stack$ -- 0
-substring$ -- 1486
-swap$ -- 406
+substring$ -- 1552
+swap$ -- 415
 text.length$ -- 35
 text.prefix$ -- 0
 top$ -- 1
 type$ -- 1200
 warning$ -- 2
-while$ -- 106
+while$ -- 113
 width$ -- 0
-write$ -- 416
+write$ -- 427
 (There were 2 warnings)
